@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件处理</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+        我们可以使用 v-on 指令 (通常缩写为 @ 符号) 来监听 DOM 事件,并在触发事件时执行一些 JavaScript
+        用法为 v-on:click="methodName" 或使用快捷方式 @click="methodName"
+        -->
+        <h1>事件处理演示</h1>
+        <!-- 当事件处理函数有多个参数时,而你恰巧又需要原始的DOM事件,可以使用特殊变量 $event 把它传入方法 -->
+        <button @click="calc(price, count, $event)">计算总价</button>
+        <p>单价:<input type="text" v-model="price" /></p>
+        <p>数量:<input type="text" v-model="count" /></p>
+        <p>总价:<span>{{ total }}</span></p>
+
+        <!-- 多事件处理 -->
+        <!-- 事件处理程序中可以有多个方法,这些方法由逗号运算符分隔 -->
+        <div>
+            <button @click="clickBtn($event), onSubmit($event)">
+                多事件处理
+            </button>
+        </div>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                price: 10,
+                count: 1,
+                total: 0
+            }
+        },
+        methods: {
+            calc(price, count, event) {
+                console.log(event.type)
+                this.total = price * count
+            },
+            clickBtn(event) {
+                alert("[" + event.target.innerText + "] is click")
+            },
+            onSubmit() {
+                alert("onSubmit")
+            }
+        },
+    })
+
+    const vm = app.mount("#app")
+</script>
+
+</html>

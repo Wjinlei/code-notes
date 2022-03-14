@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件修饰符</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- 阻止单击事件继续冒泡,去掉stop看会发生什么? -->
+        <div @click="clickBtn">
+            <p>阻止单击事件继续冒泡,子元素和父元素绑定了相同的处理函数,但由于子元素绑定了.stop修饰符,它不会被传递给父元素</p>
+            <button @click.stop="clickBtn">.stop 修饰符</button>
+        </div>
+
+        <!-- 提交事件不再重载页面 -->
+        <div>
+            <p>点击按钮时,不会再提交到百度,因为绑定了.prevent修饰符</p>
+            <form action="https://www.baidu.com" @submit.prevent="onSubmit">
+                <input type="submit" name="prevent" value=".prevent 修饰符" />
+            </form>
+        </div>
+
+        <!-- 添加事件监听器时使用事件捕获模式 -->
+        <!-- 即内部元素触发的事件先在此处理，然后才交由内部元素进行处理 -->
+        <div @click.capture="clickBtn">
+            <p>点击按钮时,事件会触发两次,因为父元素绑定了.capture修饰符,会捕获到子元素的点击事件,先处理</p>
+            <button @click="clickBtn">.capture 修饰符</button>
+        </div>
+
+        <!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
+        <!-- 即事件不是从内部元素触发的 -->
+        <div @click.self="clickBtn">
+            <p>点击按钮时,由于发生事件冒泡会传递到父元素,但由于父元素绑定了.self修饰符,因此父元素的click事件不会被触发</p>
+            <button @click="clickBtn">.self 修饰符</button>
+        </div>
+
+        <!-- 点击事件将只会触发一次 -->
+        <div>
+            <p>点击按钮时,事件只会触发一次,再次点击无效</p>
+            <button @click.once="clickBtn">.once 修饰符</button>
+        </div>
+        </p>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        methods: {
+            clickBtn(event) {
+                alert("[" + event.target.innerText + "] is click")
+            },
+            onSubmit() {
+                alert("onSubmit")
+            }
+        },
+    })
+
+    const vm = app.mount("#app")
+</script>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>style绑定_数组语法</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- :style的数组语法可以将多个样式对象应用到同一个元素上 -->
+        <span :style="[colorStyle, sizeStyle]">Hello {{ lanuage }}</span>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                lanuage: "Vue",
+
+                // 样式对象
+                colorStyle: {
+                    color: 'red',
+                    backgroundColor: 'yellow'
+                },
+
+                sizeStyle: {
+                    fontSize: '30px'
+                }
+            }
+        }
+    })
+    const vm = app.mount("#app")
+</script>
+
+</html>

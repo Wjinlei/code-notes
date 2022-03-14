@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-on指令用于绑定一个事件 -->
+        <!-- 这里给input标签绑定一个input事件,它的处理函数是changeLanuage -->
+        <input type="text" v-on:input="changeLanuage" />
+        <h1>Hello {{ lanuage }}</h1>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                lanuage: "Vue"
+            }
+        },
+        // methods是Vue的一个属性,它用于存储方法
+        methods: {
+            // Vue会自动将事件对象event封装并传入函数
+            changeLanuage(event) {
+                this.lanuage = event.target.value
+            }
+        },
+    })
+    const vm = app.mount("#app")
+</script>
+
+</html>

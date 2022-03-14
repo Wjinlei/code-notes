@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>watch</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <h2>侦听器演示</h2>
+
+        单价: <input type="text" v-model="price" />
+        数量: <input type="text" v-model="count" />
+
+        <p>总价(通过计算属性): {{ computedTotal }}</p>
+
+        <p>总价(通过侦听器): {{ total }}</p>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                price: 10,
+                count: 1,
+                total: 0
+            }
+        },
+        // 侦听器在页面渲染完毕时不会自动调用,它只会在被侦听的数据发生改变时才会被调用
+        // 侦听器一般用于在数据发生改变时需要做一些业务逻辑时使用
+        // 侦听器可以不用返回值
+        watch: {
+            count(newTotal, oldTotal) {
+                console.log("oldTotal: " + oldTotal)
+                console.log("newTotal: " + newTotal)
+                this.total = this.price * this.count
+            }
+        },
+        // 计算属性在页面渲染完毕时会进行一次计算
+        // 计算属性参与运算的值发生改变时,会触发一次重新计算
+        // 计算属性必须要返回一个值
+        computed: {
+            computedTotal() {
+                return this.price * this.count
+            }
+        },
+
+        /*
+        methods computed watch 三者使用的优先级
+        computed 和 method都能实现的功能,建议使用 computed,因为有缓存,不用渲染页面就刷新
+        computed 和 watch 都能实现的功能,建议使用 computed,因为更加简洁。
+        */
+    })
+    const vm = app.mount("#app")
+</script>
+
+</html>

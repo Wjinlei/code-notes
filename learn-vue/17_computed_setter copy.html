@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computed</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <h1>My name is {{ fullName }}</h1>
+        <h1>Last name is {{ lastName}} </h1>
+        <h1>First name is {{ firstName}} </h1>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                lastName: 'Wang',
+                firstName: 'Jerry'
+            }
+        },
+        computed: {
+            // 当你对计算属性赋值时,如果想要做特别处理,可以将计算属性写成对象的形式
+            // 提供get和set方法
+            fullName: {
+                // get 方法用于返回计算属性的值
+                get() {
+                    return this.firstName + ' ' + this.lastName
+                },
+                // set 方法当你在对计算属性赋值时,被调用
+                set(newValue) {
+                    const names = newValue.split(' ')
+                    this.firstName = names[0]
+                    this.lastName = names[names.length - 1]
+                }
+            }
+        },
+    })
+
+    setInterval(() => {
+        vm.fullName = "Jack Ma"
+    }, 3000)
+
+    const vm = app.mount("#app")
+</script>
+
+</html>

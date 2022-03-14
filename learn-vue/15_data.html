@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <h1>Hello {{ lanuage }}</h1>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        // 组件的 data 选项是一个函数,Vue 会在创建新组件实例的过程中调用此函数
+        // 它应该返回一个对象,然后 Vue 会通过响应性系统将其包裹起来,并以 $data 的形式存储在组件实例中
+        data() {
+            return {
+                lanuage: "Vue"
+            }
+        }
+    })
+    const vm = app.mount("#app")
+
+    console.log("vm.$data.lanuage: " + vm.$data.lanuage)
+    console.log("vm.lanuage: " + vm.lanuage)
+
+    // 修改vm.lanuage的值也会更新 $data.lanuage
+    console.log("vm.lanuage = Golang")
+    vm.lanuage = "Golang"
+    console.log("vm.$data.lanuage: " + vm.$data.lanuage)
+
+    // 反之亦然
+    console.log("vm.$data.lanuage = Java")
+    vm.$data.lanuage = "Java"
+    console.log("vm.lanuage: " + vm.lanuage)
+</script>
+
+</html>

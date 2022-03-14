@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>style绑定_对象语法</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- style的对象方式绑定十分只管 v-bind:style={css属性名: 数据值} -->
+        <!-- css属性名如果有短短横线的建议使用驼峰式命名规则来替代,否则就要加引号 -->
+        <h1 :style="{color: color, backgroundColor: background}">Hello {{ lanuage }}</h1>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                lanuage: "Vue",
+                color: "red",
+                background: "yellow"
+            }
+        }
+    })
+    const vm = app.mount("#app")
+</script>
+
+</html>

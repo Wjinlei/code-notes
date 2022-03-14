@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- 也可以在指令参数中使用 JavaScript 表达式,方法是用方括号括起来 -->
+
+        <!-- 使用动态参数为一个动态的事件名绑定处理函数 -->
+        <!-- 这个例子中,当event的值为click时,等价于 v-on:click="showMsg" -->
+        <!-- 当event的值被改变为mouseenter时,等价于 v-on:mouseenter="showMsg" -->
+        <h1 v-on:[event]="showMsg">动态参数测试</h1>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                event: "click"
+            }
+        },
+        methods: {
+            showMsg(event) {
+                alert(event.type + "事件被触发了")
+            }
+        },
+    })
+    const vm = app.mount("#app")
+
+    setInterval(() => {
+        vm.$data.event = "mouseenter"
+    }, 3000)
+</script>
+
+</html>

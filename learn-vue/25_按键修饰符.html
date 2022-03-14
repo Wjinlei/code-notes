@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按键修饰符</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+        在监听键盘事件时,我们经常需要检查特定的按键.
+        Vue 允许为 v-on 或者 @ 在监听键盘事件时添加按键修饰符 
+        -->
+
+        <!-- 内置按键别名 -->
+        <p>
+            请输入密码(按Enter键提交): <input type="password" @keyup.enter="onSubmit" @keyup.delete="onDelete"
+                @keyup.space="onSpace" @keyup.esc="onEsc" @keyup.up="onUp" @keyup.down="onDown" @keyup.left="onLeft"
+                @keyup.right="onRight" />
+        </p>
+
+        <p>
+            <!-- 除了默认的按键别名,你还可以直接将 KeyboardEvent.key 暴露的任意有效按键名转换为 kebab-case 来作为修饰符 -->
+            请输入密码(PageDown提交)<input @keyup.page-down="onSubmit" type="password" />
+        </p>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        methods: {
+            onSubmit() {
+                alert("提交了")
+            },
+            onDelete() {
+                console.log("你按下了删除或退格键")
+            },
+            onSpace() {
+                console.log("你按下了空格键")
+            },
+            onEsc() {
+                console.log("你按下了ESC键")
+            },
+            onUp() {
+                console.log("你按下了方向键上")
+            },
+            onDown() {
+                console.log("你按下了方向键下")
+            },
+            onLeft() {
+                console.log("你按下了方向键左")
+            },
+            onRight() {
+                console.log("你按下了方向键右")
+            },
+        }
+    })
+
+    const vm = app.mount("#app")
+</script>
+
+</html>

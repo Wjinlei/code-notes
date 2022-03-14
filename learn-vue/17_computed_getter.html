@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computed</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <h2>计算属性演示</h2>
+
+        单价: <input type="text" v-model="price" />
+        数量: <input type="text" v-model="count" />
+
+        <!-- 不够语义化 -->
+        <!-- <h1>Total: {{ count * price }}</h1> -->
+
+        <p>总价(通过计算属性): {{ total }}</p>
+        <p>总价(通过方法): {{ funcTotal() }}</p>
+
+        <h2>修改用户名看看会发生什么?</h2>
+        用户名: <input type="text" v-model="username" />
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                username: "admin",
+                price: 10,
+                count: 1,
+            }
+        },
+        // 计算属性在页面渲染完毕时会进行一次计算
+        // 计算属性参与运算的值发生改变时,会触发一次重新计算
+        computed: {
+            total() {
+                alert("计算属性被调用了")
+                return this.price * this.count
+            }
+        },
+        methods: {
+            funcTotal() {
+                alert("方法被调用了")
+                return this.price * this.count
+            },
+        }
+
+        // 计算属性和方法的区别
+        // 我们貌似看到方法和计算属性都能实现计算总价的效果
+        // 实际上当页面重新渲染时,方法就会被调用
+        // 而计算属性是只有当参与运算的数据发生改变时才会被重新调用
+    })
+    const vm = app.mount("#app")
+</script>
+
+</html>

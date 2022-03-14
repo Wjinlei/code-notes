@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>差值表达式</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- 数据绑定最常见的形式就是使用"Mustache"(双大括号)语法的文本插值 -->
+        <h1>Hello {{ lanuage }}</h1>
+
+        <!-- v-once 只渲染一次,通过使用 v-once 指令,你也能执行一次性地插值,当数据改变时,插值处的内容不会更新 -->
+        <h1 v-once>这个将不会改变: {{ message }}</h1>
+
+        <!-- 原始HTML -->
+        <!-- 双大括号会将数据解释为普通文本,而非 HTML 代码.为了输出真正的 HTML,你需要使用v-html -->
+        <span v-html="rawHtml"></span>
+
+        <!-- Mustache 语法不能在HTML属性中使用,然而,可以使用 v-bind 指令 -->
+        <button v-bind:disabled="isButtonDisabled">按钮</button>
+
+        <!-- javascript表达式支持 -->
+        <h1>{{ number + 1 }}</h1>
+        <h1>{{ ok ? 'Yes': 'No' }}</h1>
+        <h1>{{ message.split('').reverse().join('') }}</h1>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                lanuage: 'Vue',
+                number: 1,
+                ok: true,
+                message: 'A B C D E F G',
+                rawHtml: '<h1>This is row html code.</h1>',
+                isButtonDisabled: true
+            }
+        }
+    })
+    const vm = app.mount("#app")
+
+    setInterval(() => {
+        vm.$data.message = "This is new message"
+    }, 3000)
+</script>
+
+</html>

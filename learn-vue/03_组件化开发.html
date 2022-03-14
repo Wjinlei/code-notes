@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件化开发</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <h1>Hello {{ lanuage }}</h1>
+        <Golang></Golang> <!-- 调用组件 -->
+        <Golang></Golang> <!-- 调用组件 -->
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                lanuage: "Vue"
+            }
+        }
+    })
+
+    // 在应用中注册一个全局组件 Golang
+    // 组件的好处是可以复用,简化代码
+    app.component("Golang", {
+        data() {
+            return {
+                lanuage: "Golang"
+            }
+        },
+        template: '<h1>Hello {{ lanuage }}</h1>'
+    })
+
+    const vm = app.mount("#app")
+</script>
+
+</html>

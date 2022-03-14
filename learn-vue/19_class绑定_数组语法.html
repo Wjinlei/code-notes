@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class绑定_数组语法</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- 你还可以通过数组语法 一次性绑定多个样式 -->
+        <h1 :class="[red, backgroundYellow]">Hello {{ lanuage }}</h1>
+
+        <!-- 可以写三元表达式 -->
+        <!-- 这样写将始终添加 red,但是只有在 isActive 为 true 时才添加 backgroundYellow -->
+        <h1 :class="[red, isActive ? backgroundYellow: '']">Hello {{ lanuage }}</h1>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                lanuage: "Vue",
+                red: "red",
+                backgroundYellow: "background",
+                isActive: false
+            }
+        },
+    })
+    const vm = app.mount("#app")
+</script>
+
+<style>
+    .red {
+        color: red;
+    }
+
+    .background {
+        background-color: yellow;
+    }
+</style>
+
+</html>

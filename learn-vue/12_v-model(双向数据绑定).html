@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-model指令用于实现双向数据绑定 -->
+        <!-- 当数据lanuage发生改变时,input的值也会发生改变 -->
+        <!-- 当input的值发生改变时,lanuage数据也会发生改变 -->
+
+        <!-- 这里将input标签的值绑定到lanuage上 -->
+        <input type="text" v-model="lanuage" />
+        <h1>Hello {{ lanuage }}</h1>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                lanuage: "Vue"
+            }
+        }
+    })
+    const vm = app.mount("#app")
+</script>
+
+</html>

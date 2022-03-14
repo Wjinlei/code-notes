@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on缩写</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-on:input 可以缩写为 @input -->
+        <input type="text" @input="changeLanuage" />
+        <h1>Hello {{ lanuage }}</h1>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                lanuage: "Vue"
+            }
+        },
+        methods: {
+            changeLanuage(event) {
+                this.lanuage = event.target.value
+            }
+        },
+    })
+    const vm = app.mount("#app")
+</script>
+
+</html>

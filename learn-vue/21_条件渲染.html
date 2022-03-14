@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件渲染</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="showRed">红色</button>
+        <button v-on:click="showGreen">绿色</button>
+        <button v-on:click="showBlue">蓝色</button>
+
+        <!-- v-if / v-else-if / v-else -->
+        <div v-if="color === 'red'">
+            <h1 :style="{color: color}">Hello World!</h1>
+        </div>
+        <div v-else-if="color === 'green'">
+            <h1 :style="{color: color}">Hello World!</h1>
+        </div>
+        <div v-else-if="color === 'blue'">
+            <h1 :style="{color: color}">Hello World!</h1>
+        </div>
+        <div v-else>
+            <h1>Hello World!</h1>
+        </div>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                color: ''
+            }
+        },
+        methods: {
+            showRed() {
+                this.color = 'red'
+            },
+            showGreen() {
+                this.color = 'green'
+            },
+            showBlue() {
+                this.color = 'blue'
+            }
+        }
+    })
+    const vm = app.mount("#app")
+</script>
+
+</html>

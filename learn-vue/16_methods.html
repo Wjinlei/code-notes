@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>methods</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <button @click="add">+</button>
+        <h1>Count: {{ count }}</h1>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                count: 1
+            }
+        },
+        // 我们用methods选项向组件实例添加方法,它应该是一个包含所需方法的对象
+        methods: {
+            add() {
+                // Vue 自动为 methods 绑定 this,以便于它始终指向组件实例
+                this.count = this.count + 1;
+            }
+        }
+    })
+    const vm = app.mount("#app")
+</script>
+
+</html>

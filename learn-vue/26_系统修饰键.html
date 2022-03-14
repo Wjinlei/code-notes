@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统修饰键</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+        可以用如下修饰符来实现仅在按下相应按键时才触发鼠标或键盘事件的监听器
+        .ctrl
+        .alt
+        .shift
+        .meta
+        -->
+        <p>
+            <!-- Alt + Enter -->
+            请输入密码(按下Alt+Enter提交)<input @keyup.alt.enter="onSubmit" type="password" />
+        </p>
+
+        <!-- Ctrl + Click -->
+        <div @click.ctrl="onSubmit">按下Ctrl再点我</div>
+
+        <!-- .exact 修饰符允许你更精确的控制系统修饰符组合触发的事件 -->
+        <p>
+            <!-- 即使 Alt 或 Shift 被一同按下时也会触发 -->
+            <button @click.ctrl="onSubmit">A</button>
+
+            <!-- 有且只有 Ctrl 被按下的时候才触发 -->
+            <button @click.ctrl.exact="onSubmit">B</button>
+
+            <!-- 没有任何系统修饰符被按下的时候才触发 -->
+            <button @click.exact="onSubmit">C</button>
+        </p>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        methods: {
+            onSubmit() {
+                alert("提交了")
+            },
+        }
+    })
+
+    const vm = app.mount("#app")
+</script>
+
+</html>

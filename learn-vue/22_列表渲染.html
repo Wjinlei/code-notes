@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表渲染</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <h1>我学过的语言有如下</h1>
+        <ul>
+            <!-- 我们可以用 v-for 指令基于一个数组来渲染一个列表 -->
+            <!--
+            v-for 指令需要使用 item in items 形式的特殊语法,其中items是源数据数组,而item则是被迭代的数组元素的别名 
+            v-for 还支持一个可选的第二个参数: (item, index) in items,index即当前项的索引
+            :key 是一个Vue需要的属性,它表示这个item唯一id
+            :key 还有一个作用是用于维护状态,如果数据项的顺序被改变,Vue将不会移动DOM元素来匹配数据项的顺序,而是就地更新每个元素
+            为了给Vue一个提示,以便它能跟踪每个节点的身份,从而重用和重新排序现有元素,你需要为每项提供一个唯一的key
+            建议尽可能在使用 v-for 时提供 key,除非遍历输出的 DOM 内容非常简单,或者是刻意依赖默认行为以获取性能上的提升
+            -->
+            <li v-for="(item, index) in lanuages" :key="index">
+                {{ index }}-{{ item }}
+            </li>
+        </ul>
+
+        <!-- 你也可以用 v-for 来遍历一个对象的属性 -->
+        <ul id="v-for-object" class="demo">
+            <li v-for="(value, name, index) in myObject">
+                {{ index }}.{{ name }}: {{ value }}
+            </li>
+        </ul>
+
+        <!-- v-for 也可以接受整数,在这种情况下,它会把模板重复对应次数 -->
+        <div id="range" class="demo">
+            <span v-for="n in 10" :key="n">{{ n }} </span>
+        </div>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                lanuages: ['Vue', 'Golang', 'Python', 'Java'],
+
+                myObject: {
+                    title: 'How to do lists in Vue',
+                    author: 'Jane Doe',
+                    publishedAt: '2016-04-10'
+                }
+            }
+        }
+    })
+    const vm = app.mount("#app")
+</script>
+
+<style>
+    .demo {
+        font-family: sans-serif;
+        border: 1px solid #eee;
+        border-radius: 2px;
+        padding: 20px 30px;
+        margin-top: 1em;
+        margin-bottom: 40px;
+        user-select: none;
+        overflow-x: auto;
+    }
+</style>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命周期钩子</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <h1>Hello {{ lanuage }}</h1>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                lanuage: "Vue"
+            }
+        },
+        // 每个组件在被创建时都要经过一系列的初始化过程
+        // 在这个过程中也会运行一些叫做生命周期钩子的函数,这给了用户在不同阶段添加自己的代码的机会
+        beforeCreate() {
+            // 实例被创建之前
+            alert("beforeCreate")
+        },
+        created() {
+            // 实例被创建后
+            alert("created")
+        },
+        beforeMount() {
+            // 实例被挂载之前
+            alert("beforeMount")
+        },
+        mounted() {
+            // 实例被挂载之后
+            alert("mounted")
+        },
+        beforeUpdate() {
+            // 页面渲染之前
+            alert("beforeUpdate")
+        },
+        updated() {
+            // 页面发生渲染时
+            alert("updated")
+        },
+        beforeUnmount() {
+            // 实例卸载之前
+            alert("beforeUmount")
+        },
+        unmounted() {
+            // 实例卸载之后
+            alert("unmounted")
+        },
+    })
+    const vm = app.mount("#app")
+
+    // 3秒之后修改lanuage的值
+    setInterval(() => {
+        // Vue 还通过组件实例暴露了一些内置属性，如 $attrs、$emit、$data等等
+        // vm.$data.lanuage = "js"
+
+        // 可简写为下面的形式
+        vm.lanuage = "js"
+    }, 3000)
+</script>
+
+</html>

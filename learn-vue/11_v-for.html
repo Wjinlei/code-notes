@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <h1>我学过的语言有如下</h1>
+        <ul>
+            <!-- v-for指令用于循环一个列表 -->
+            <li v-for="(item, index) in lanuages" :key="index">{{ index }}-{{ item }}</li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                lanuages: ['Vue', 'Golang', 'Python', 'Java']
+            }
+        }
+    })
+    const vm = app.mount("#app")
+</script>
+
+</html>

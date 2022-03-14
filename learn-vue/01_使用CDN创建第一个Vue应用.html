@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用CDN创建第一个Vue应用</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+
+<script>
+    // 通过 Vue.createApp创建一个Vue应用
+    // 传递给 createApp 的选项用于配置根组件,当我们挂载应用时,该组件被用作渲染的起点 
+    const app = Vue.createApp({
+        // 通过template属性可以向容器(这里的容器就是挂载的元素app)中插入html模板,而不用在html页面上写html代码,不过这个一般只用于在一些特别小的子组件中使用
+        template: '<h1>Hello World</h1>'
+    })
+
+    // 将应用挂载到id为app的容器(元素)上
+    const vm = app.mount("#app") // 一个应用被挂载后,我们称为组件,每个组件将有自己的组件实例vm(ViewModel的缩写)
+</script>
+
+</html>

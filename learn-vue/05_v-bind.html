@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- 指令(Directives)是带有 v- 前缀的特殊属性,指令的值预期是单个 JavaScript 表达式 -->
+        <!-- 指令的职责是,当表达式的值改变时,将其产生的连带影响,响应式地作用于 DOM -->
+
+        <!-- v-bind指令用于动态绑定一个属性 -->
+        <!-- 下面给button按钮动态绑定一个disabled属性它的值取决于isButtonDisabled这个数据的值 -->
+        <!-- 其中:disabled是指令参数,一些指令能够接收一个"参数",在指令名称后以冒号表示 -->
+        <button v-bind:disabled="isButtonDisabled">按钮</button>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                isButtonDisabled: true
+            }
+        }
+    })
+    const vm = app.mount("#app")
+</script>
+
+</html>

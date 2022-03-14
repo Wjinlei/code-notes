@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class绑定_对象语法</title>
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!-- 引入Vue3 -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- 对象方式绑定 v-bind:class={样式名称: true/false} -->
+        <!-- 当条件为true时, 样式被绑定 -->
+        <!-- 同样可以使用动态参数语法 -->
+        <h1 :class="{[color]: isActive}">Hello {{ lanuage }}</h1>
+        <button @click="redClick">红色</button>
+        <button @click="blueClick">蓝色</button>
+        <button @click="greenClick">绿色</button>
+    </div>
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                lanuage: "Vue",
+                color: "red",
+                isActive: true
+            }
+        },
+        methods: {
+            redClick() {
+                this.color = "red"
+            },
+            blueClick() {
+                this.color = "blue"
+            },
+            greenClick() {
+                this.color = "green"
+            }
+        }
+    })
+    const vm = app.mount("#app")
+</script>
+
+<style>
+    .red {
+        color: red;
+    }
+
+    .blue {
+        color: blue;
+    }
+
+    .green {
+        color: green;
+    }
+</style>
+
+</html>
