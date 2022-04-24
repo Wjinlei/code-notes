@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关于箭头函数</title>
+</head>
+<body>
+
+<script>
+    // 关于箭头表达式 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+    // 箭头表达式是 ECMAScript 2015(又称ES6)年新增的一个特性
+    // 它简化了定义函数的方法,传统的JavaScript函数语法并没有提供任何的灵活性,每一次你需要定义一个函数时,你都必须输入function () {}
+    // 箭头函数的产生，主要由两个目的：更简洁的语法和与父作用域共享关键字this
+
+    // 下面看一个例子
+    // 上一节求 1 到 n的和的例子如果用箭头表达式来写应该向下面这样
+    var test = n => { return n <= 1 ? 1 : n + test(n-1)};
+    alert(test(100))
+
+    // 箭头函数的基本语法
+        // (参数1, 参数2, …, 参数N) => { return 表达式; }
+        // (参数1, 参数2, …, 参数N) => ( 表达式 )
+    // 当只有一个参数时，圆括号是可选的：
+        // (单一参数) => { return 表达式; }
+        // 单一参数 => 表达式
+    // 没有参数的函数应该写成一对圆括号。
+        // () => {return 表达式}
+        // () => 表达式
+</script>
+</body>
+</html>

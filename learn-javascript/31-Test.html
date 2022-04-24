@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>词法分析练习</title>
+</head>
+<body>
+
+<script>
+    // 下题的结果是什么? 为什么?
+    function a(b) {
+        alert(b);
+        b = function () {
+            alert(b);
+        };
+        b();
+    }
+    a(1);
+
+
+    // 对于b = function () {} 和 function b(){} 有什么区别?
+    // 答:
+    // b = function () {} 仅仅是一个函数表达式的返回结果赋值给一个变量
+    // 而function b(){} 表示声明函数
+    // 前者,在词法分析阶段不会生效,而是在执行阶段才生效
+    // 后者,在词法分析阶段生效
+
+    // 那么下面这个调用方式你能看懂吗?
+    (function(window,undefined){})(window);
+
+    // 详解
+    // 先看最外层的括号()(window),先不看里面的,这是什么意思?
+    // 答: 乍一看像不像调用函数? 对,它就是在调用函数? 那它调用的是谁?
+    // 我们一般调用函数是怎么调用的? 例如有个函数 function func1(window){}; 那么调用的时候就是 func1(window);
+    // 而这里不就相当于把 func1 换成 function(window,undefined){} 吗? 相当于就是在调用 function(window,undefined){} 这个函数
+    // 并且传递给他一个实参 window
+
+    // 在看里面的function(window,undefined){} , 这是什么意思?
+    // 答: 这不就是一个函数吗?
+
+    // 所以这种写法,相当于就是调用里面的函数,并传递给它一个实际参数window
+
+
+    // 那么为什么不给他传递undefined参数呢?
+    // 答:
+    // 在低版本IE和Firefox浏览器中,undefined居然可以被重新赋值? 所以为了安全考虑,不给他传递参数
+    // 那么它在词法分析过程的时候,就会被默认赋值为undefined,所以这就是为什么不传递undefined参数的原因
+
+    // 对于函数嵌套:
+    // 词法分析时,先从外部函数开始分析(AO对象)一直到最内部函数
+    // 函数执行时,先从最内部函数开始执行(AO对象),一直到window
+    // 这个过程叫做作用域链
+</script>
+</body>
+</html>

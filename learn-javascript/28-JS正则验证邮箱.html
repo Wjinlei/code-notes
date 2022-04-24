@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS正则验证邮箱</title>
+</head>
+<body>
+
+<!-- 正则表达式详细参见: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions -->
+
+<form action="#">
+    用户名:<input type="text" name="username" />
+    Email:<input type="text" name="email" />
+    <input type="submit" value="提交" />
+</form>
+
+
+<script>
+    document.getElementsByTagName('form')[0].onsubmit = function (ev) {
+        // 需求:
+        //     1.用户名只能是字母及6-11位数字
+        //     2.Email为正确的Email
+
+        // 匹配规则: 开头必须是字母a-z或A-Z或0-9的字符,最小6位,最大11位,也必须以字母a-z或A-Z或0-9结尾
+        var userpatten = /^[a-zA-Z0-9]{6,11}$/;
+        // 用指定的patten的test方法去检测username
+        if(!userpatten.test(document.getElementsByName('username')[0].value)){
+            alert('用户名由6-11位字母和数字组成!');
+            return false;
+        }
+
+        // 匹配规则: 由a-zA-Z0-9和-开头1次或多次 @ a-zA-Z0-9和-开头1次或多次 (. a-zA-Z0-9和-开头1次或多次) 匹配前面括号1次或多次结尾
+        var emailpatten = /^[a-zA-Z0-9\-]+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)+$/;
+        //　用指定patten的test方法去检测email
+        if(!emailpatten.test(document.getElementsByName('email')[0].value)){
+            alert('请输入正确的Email地址!');
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

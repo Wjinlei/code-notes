@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS高级部分之作用域</title>
+</head>
+<body>
+
+<script>
+    //　下面的结果是什么?
+    var c = 5;
+    function t1() {
+        var d = 6;
+        function t2() {
+            var e = 7;
+            alert(c + d + e);
+        }
+        t2();
+    }
+    t1(); // 18
+
+    // 在JS中,函数嵌套是非常普遍的
+    // 在函数嵌套中对变量是如何寻找的?
+    // 答: 首先在函数内寻找,如果寻找不到,则往外层寻找,直到全局(window)区域,如果实在没找到则undefined
+
+    // var 的作用:
+    alert(window.g); // undefined
+    alert(window.h); // undefined
+    function func1() {
+        g = 5; //不加var,仅仅是赋值操作,不要狭隘的理解为声明全局变量,它仅仅只是赋值,如果全局也没定义则定义并赋值
+        var h = 6; //加var,则表示声明变量
+    }
+    func1();
+    alert(window.g); // 5
+    alert(window.h); // undefined
+
+    function test1(){
+        var j;
+        function test2() {
+            j = 5;
+            l = 6; // 不声明var,仅仅只是赋值,如果全局也没定义则在全局定义并赋值(window.l = 6 )
+        }
+        test2();
+    }
+    test1();
+    alert(window.j); // undefined
+    alert(window.l); // 6
+    alert(j); // 注意 j 和window.j 是不同的,window.j会把j当做window的属性,所以会返回undefined,而直接写j则会报 j is not defined错误
+    // 值得注意的是 一旦  报错则不再向下继续执行
+    var m = 5;
+    console.log(m);
+
+</script>
+</body>
+</html>

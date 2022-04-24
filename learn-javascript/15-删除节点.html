@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="删除最后一个li" onclick="del();" />
+    <ul>
+        <li>春</li>
+        <li>夏</li>
+        <li>秋</li>
+        <li>冬</li>
+    </ul>
+<script>
+    function del() {
+        var lis = document.getElementsByTagName('li');
+        var last_li = lis[lis.length - 1];
+        last_li.parentNode.removeChild(last_li);
+
+        // 总结:
+        // 想要删除元素,必须先要找到它的父级元素,然后调用父级元素的removeChild方法来删除
+    }
+</script>
+</body>
+</html>

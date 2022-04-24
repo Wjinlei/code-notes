@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>五子棋练习</title>
+    <style type="text/css">
+        #container {
+        width:600px;
+        height:800px;
+        margin:0 auto;
+        border:solid 1px blue;
+        background:url(./images/wuziqi/backgroup.gif) no-repeat;
+        padding-top:7px;
+        padding-left:6px;
+        }
+
+        table{
+        border-collapse:collapse;
+        width:525px;
+        height:525px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+            <table>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+    </div>
+</body>
+<script>
+    // 开发五子棋的步骤:
+    // 1. 造棋盘
+    // 2. 开发下棋功能
+    // 3. 判断胜负
+
+    // 闭包计数器
+    var wjl = {};
+    wjl.calc = (function(){
+        var count = 0;
+        function add() {
+            return ++count;
+        }
+        function sub() {
+            return --count;
+        }
+        return function (flag) {
+            if(flag){
+                return add();
+            }else{
+                return sub();
+            }
+        }
+    })();
+
+    window.onload = function () {
+
+        // 是否胜负标记
+        var isWin = false;
+
+        // 下棋功能
+        function play() {
+            if(wjl.calc(true) % 2 === 0){ // 如果是偶数就下白棋
+                // 判断是否有棋子
+                if(this.style.backgroundImage){
+                    alert('此处已经有棋子了');
+                    wjl.calc(false); // 计数器-1
+                    return false;
+                }
+                // 排除点到tbody和tr的情况,避免一次下多个棋子
+                if(this.tagName === 'TBODY'){
+                    return false;
+                }
+                if(this.tagName === 'TR'){
+                    return false;
+                }
+                this.style.backgroundImage = 'url(./images/wuziqi/white.gif';
+
+                // 把棋子的颜色传递给judge方法,用于作为判断胜负方的标记
+                var color = 'white';
+
+                // 调用判断胜负方法
+                judge.call(this, color);
+
+            }else{ // 否则下黑棋
+                // 判断是否有棋子
+                if(this.style.backgroundImage){
+                    alert('此处已经有棋子了');
+                    wjl.calc(false); // 计数器-1
+                    return false;
+                }
+                // 排除点到tbody和tr的情况,避免一次下多个棋子
+                if(this.tagName === 'TBODY'){
+                    return false;
+                }
+                if(this.tagName === 'TR'){
+                    return false;
+                }
+                this.style.backgroundImage = 'url(./images/wuziqi/black.gif';
+                var color = 'black';
+
+                // 把棋子的颜色传递给judge方法,用于作为判断胜负方的标记
+                judge.call(this, color);
+            }
+        }
+
+        // 判断胜负功能
+        function judge(color) {
+            // cellIndex就是td在这一行中的索引
+                // alert('X: ' + this.cellIndex);
+            // rowIndex就是tr在整个table中的索引
+                // alert('Y: ' + this.parentElement.rowIndex);
+
+            // 保存当前棋子的坐标和颜色 {x , y, color}
+            var curr_pos = {x:this.cellIndex, y:this.parentElement.rowIndex, color:color};
+
+            var line = ['', '', '', '']; // 一个数组用于存放 横、竖、左下斜、右下斜 4条线上的棋子地图(表现形式)
+
+            // 获取td对象集合,以用于和当前棋子进行对比
+            var tds = document.getElementsByTagName('td');
+
+            // 遍历td对象集合,循环这个棋盘,因为整个棋盘有225个td,所以就循环225次
+            for(var i=0,tmp={}; i<225; i++){
+
+                // 获取当前循环到的这颗棋子的坐标 {x, y, color}
+                tmp = {x:tds[i].cellIndex, y:tds[i].parentElement.rowIndex, color:'0'};
+
+                // 获取当前循环到的这颗棋子的颜色 b(表示黑色) w(表示白色) 0(表示空)
+
+                // 如果当前循环到的这颗棋子的背景图片包含"black"这个字符串,则表示它是黑棋,否则如果包含"white",则说明是白棋
+                if(tds[i].style.backgroundImage.indexOf('black') >= 0){
+                    tmp.color = 'b'; //把对应颜色代码保存到临时变量
+                }else if(tds[i].style.backgroundImage.indexOf('white') >= 0){
+                    tmp.color = 'w'; //把对应颜色代码保存到临时变量
+                }
+
+                // 把当前循环到的这颗棋子的颜色保存到棋子地图中
+                // 横
+                if(curr_pos.y === tmp.y){
+                    line[0] += tmp.color; // 把颜色代码加到棋子地图中,这其实就是字符串拼接
+                }
+                // 竖
+                if(curr_pos.x === tmp.x){
+                    line[1] += tmp.color; // 把颜色代码加到棋子地图中,这其实就是字符串拼接
+                }
+
+                // 左下斜
+                if( (curr_pos.x + curr_pos.y) === (tmp.x + tmp.y) ){
+                    line[2] += tmp.color; // 把颜色代码加到棋子地图中,这其实就是字符串拼接
+                }
+
+                // 右下斜
+                if( (curr_pos.x - tmp.x) === (curr_pos.y - tmp.y) ){
+                    line[3] += tmp.color; // 把颜色代码加到棋子地图中,这其实就是字符串拼接
+                }
+
+            }
+
+            // 判断胜负只需要判断line中有没有连续的5个 "b" 或者5个 "w"
+            // 判断4条线上有没有5个连续的b 或者 w
+
+            // 如果你传进来的棋子颜色是黑色,则把bbbbb赋值给color,作为最终判断的条件,否则把你下的是白棋,则把wwwww赋给color
+            color = color == 'black'?'bbbbb':'wwwww';
+
+            // 循环遍历棋子地图
+            for(var i=0;i<4;i++){
+                // 如果包含color则表示已经有5个,说明胜出
+                if(line[i].indexOf(color) >= 0){
+
+                    // 如果color是bbbbb,则表示是黑棋,因此黑棋胜
+                    if(color === 'bbbbb' ){
+                        alert('黑棋胜!');
+                        // 胜利后把胜利标记改成true;
+                        isWin = true;
+                    }else if(color === 'wwwww' ){ // 如果color是wwwww,则表示是白棋,因此白棋胜
+                        alert('白棋胜!');
+                        isWin = true; // 胜利后把胜利标记改成true;
+                    }
+                    break; // 退出循环
+                }
+            }
+        }
+
+        document.getElementsByTagName('table')[0].onclick = function (ev) {
+            // 如果isWin为true,则表示已经分出胜负,则不允许再下棋
+            if(isWin){
+                alert('已分出胜负!');
+                return;
+            }
+
+            // 调用下棋方法,将this指向ev.srcElement(也就是你下的那颗棋子)
+            play.call(ev.srcElement);
+        };
+    }
+
+
+    // 用到的知识点总结:
+    // 事件委托
+    // 闭包
+    // 数组
+    // this
+    // 对象
+    // 数据地图
+</script>
+</html>

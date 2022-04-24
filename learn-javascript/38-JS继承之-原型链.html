@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS继承</title>
+</head>
+<body>
+
+<script>
+    // JS中没有类的概念,因此不能使用类的方式来继承
+    // JS中的继承是使用原型的概念来实现的
+
+    // 老虎的构造函数
+    function Tiger() {
+        this.bark = function () {
+            alert('我是百兽之王');
+        }
+    }
+
+    // 猫的构造函数
+    function Cat() {
+        this.climb = function () {
+            alert('我会爬树');
+        }
+    }
+    var bosimao = new Cat();
+
+    // 你可以把这句话理解成(Tiger类继承Cat类)
+    Tiger.prototype = bosimao; // 用一个具体的对象(本例中是bosimao对象)来做老虎构造函数的原型
+
+    // 此时创建老虎对象
+    var huananhu = new Tiger(); // 此时huananhu.__proto__ 属性就被改变成了 Cat, 此时Cat就是原型
+
+    // 老虎对象就具备爬树功能了
+    huananhu.climb();
+
+    console.log(bosimao); // 默认的原型对象是 Object
+
+    // 总结:
+    // JS中的继承是通过 构造函数名.prototype = 具体对象 来实现的
+    // 原型链就是原型一级一级向上的关系
+
+
+    // 思考: 能不能给所有的对象加一个功能? 参看38-Test
+</script>
+</body>
+</html>

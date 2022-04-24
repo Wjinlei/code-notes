@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建节点的方法</title>
+</head>
+<body>
+    <input type="button" value="创建一个冬" onclick="add();" />
+    <ul>
+        <li>春</li>
+        <li>夏</li>
+        <li>秋</li>
+    </ul>
+<script>
+    function add() {
+        // 创建一个li标签
+        var li = document.createElement('li');
+        // 给li标签添加文字"冬",因为"冬"文本也是节点,所以要先创建文本节点
+        var text = document.createTextNode('冬');
+        // 然后将"冬"添加到li中
+        li.appendChild(text);
+        // 在把li添加到ul中
+        var ul = document.getElementsByTagName('ul');
+        ul[0].appendChild(li);
+    }
+
+    // 总结:
+    // 想要创建节点,第一步先创建节点,然后要添加节点位置的父节点
+    // 然后再调用appendChild方法
+</script>
+</body>
+</html>

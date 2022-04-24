@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS的对象操作</title>
+</head>
+<body>
+<!-- 这里就演示一些,举一反三,其他的自己测试 -->
+<script>
+    var str = 'hello world';
+    var str2 = 'js';
+
+    // String 字符串对象
+        // length: 取长度
+        // concat: 连接两个或更多字符串
+        // indexOf: 返回出现的字符串的位置
+        // substr: 截取字符串
+        // toLowerCase: 转换成小写
+        // toUpperCase: 转换成大写
+        // replace: 字符串替换
+        // join: 把数组按指定分隔符拆分成字符串
+        // split: 把字符串按指定分隔符组成数组
+    // 取长度
+    console.log(str.length);
+    // 在str中找一找有没有world这个字符串,有则返回索引,如没找到返回-1
+    console.log(str.indexOf('world'));
+    // 字符串截取,从0开始,到5结束
+    console.log(str.substr(0, 5));
+    // 打印对象
+    console.log(str);
+    // 连接字符串
+    console.log(str.concat(str2));
+    // 字符串替换
+    console.log(str.replace('world', str2));
+    var arr = ['春', '夏', '秋', '冬']
+    // join把数组按指定分隔符拆分成字符串
+    console.log(arr.join(','));
+    var str3 = '冬,暖,夏,凉';
+    // split把字符串按指定分隔符组成数组
+    console.log(str3.split(','));
+
+    // Date 日期对象
+        // getYear: 返回年份(2或4位)
+        // getFullYear: 返回年份(4位)
+        // getMonth: 返回月份(0-11)
+        // getDate: 返回日期(1-31)
+        // getDay: 返回星期数(0-6)
+        // getHours: 返回小时数(0-23)
+        // getMinutes: 返回分钟数(0-59)
+        // getSeconds: 返回秒数(0-59)
+        // getMilliseconds: 返回毫秒数(0-999)
+
+    var dt = new Date();
+    console.log(dt.getFullYear());
+    console.log(dt.getHours());
+
+    // Math 数学对象
+        // ceil(数值): 大于或等于该数的最小整数(向上取整)
+        // floor(数值): 小于或等于该数的最大整数(向下取整)
+        // min(数值1, 数值2) 返回最小值
+        // max(数值1, 数值2) 返回最大值
+        // pow(数值1, 数值2) 返回数值1的数值2次方
+        // random() 返回随机数(0-1之间)
+        // round(数值) 四舍五入
+        // sqrt(数值) 开平方根
+
+    // 因为Math全是静态方法,所以不用new,直接用就可以
+    console.log(Math.ceil(4.23));
+    console.log(Math.ceil(4));
+    console.log(Math.floor(4.23));
+    console.log(Math.floor(4));
+    console.log(Math.max(1, 3));
+    console.log(Math.random()); //0.5650193839684396 返回随机位数的0~1之间的随机数
+    console.log(Math.random()*5 + 5); //返回5到10之间的随机数
+
+    // 数组对象
+        // concat: 返回一个由两个数组合并组成的新数组
+        // join: 返回一个由数组中所有元素连接在一起的String对象
+        // pop: 删除数组中最后一个元素并返回该值
+        // push: 向数组中添加新元素,返回数组的新长度
+        // shift: 删除数组中的第一个元素并返回该值
+        // unshift: 返回新的数组长度,在该数组头部插入了指定的元素
+        // sort: 返回一个元素被排序了的Array对象
+        // reverse: 返回一个元素反序的Array对象
+        // slice: 返回数组的一个片段
+        // splice: 从数组中删除元素
+    var arr2 = ['东', '南', '西', '北'];
+    console.log(arr.concat(arr2));
+    console.log(arr.pop());
+    console.log(arr.push('王'));
+    console.log(arr.shift());
+    console.log(arr.unshift('子'));
+    console.log(arr.slice(0,2));
+</script>
+</body>
+</html>

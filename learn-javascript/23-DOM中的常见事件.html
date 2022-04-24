@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM中的常见事件</title>
+</head>
+<!--onload 当页面加载完毕时被触发, 也就是DOM树在内存中被加载完成时-->
+<!--还可以在js中使用 window.onload -->
+
+<body onload="func7();">
+    <!--onclick  当元素被点击时触发-->
+    <input type="button" value="onclick" onclick="func1();" /><br/>
+
+    <!--onfocus  当元素获得焦点时触发-->
+    <!--onblur   当元素失去焦点时触发-->
+    <input type="text" name="username" onfocus="func2();" onblur="func3();"/><br/>
+
+    <!--onchange 当选择被改变时触发-->
+    <select name="" id="city" onchange="func4();">
+        <option value="-1">请选择</option>
+        <option value="0">成都</option>
+        <option value="1">眉山</option>
+    </select><br/>
+
+    <!--onmouseover 当鼠标经过时被触发-->
+    <input type="button" value="onmouseover" onmouseover="func5();" /><br/>
+
+    <!--onsubmit 当表单提交时被触发-->
+    <form action="#" method="get" onsubmit="return func6();">
+        <input type="submit" value="表单提交" />
+    </form><br/>
+
+    <script>
+    function func1() {
+        alert('onclick 被触发');
+    }
+
+    function func2() {
+        document.getElementsByName('username')[0].style.border = '2px solid red';
+    }
+    
+    function func3() {
+        document.getElementsByName('username')[0].style.border = '2px solid blue';
+    }
+
+    function func4() {
+        alert('onchange 被触发');
+    }
+
+    function func5() {
+        alert('onmouseover 被触发');
+    }
+
+    function func6(){
+        // onsubmit 事件可以在表单提交之前进行操作,例如本例,阻止它提交
+        // 注意想要阻拦它提交,需要在onsubmit的时候 return func6()
+        return false;
+    }
+
+    function func7() {
+        alert('onload');
+    }
+
+    window.onload = function() {
+        alert('整个浏览器窗口都加载完毕了')
+    }
+
+    // 关于onload的问题:
+    // 如果onload绑定的标签,引用了外部资源,那么当外部资源没有加载完成时
+    // onload就无法触发,它会一直等外部资源加载完成才会触发
+    // 那么有没有办法,让它不管外部资源,只要自己加载完成就触发呢?
+    //     答: 可以利用 时间 行为 结构 相分离的办法来解决
+    // 具体参考下一节 24-事件行为结构相分离.html
+    </script>
+
+<!--总结:-->
+<!--其他事件请参考W3C DOM手册-->
+</body>
+</html>

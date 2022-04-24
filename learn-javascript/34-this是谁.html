@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this是谁</title>
+</head>
+<body>
+
+<script>
+    // JS中函数的4种调用方式
+
+    // 1. 普通调用方法:
+    alert(window.xx);
+    function func1() {
+        this.xx = 5;
+    }
+    func1();
+    alert(window.xx);
+    // 对于普通调用方法, this指向window(其实指向null,但我们就记指向window就好,不必深究)
+
+    // 2. 作为对象方法来调用
+    var obj = {xxx: 6, t: function(){alert(this.xxx)}};
+    obj.t();
+    // 对于作为对象方法来调用, this指向调用者,即该对象
+
+
+    // 3. 作为构造函数调用时
+    // JS中没有类的概念,创建对象是用构造函数来完成的,或者直接用json格式来写对象
+    function Dog(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    var dog = new Dog('huzi', 2);
+    // 对于作为构造函数调用时
+    // 3.1 系统创建空对象
+    // 3.2 把函数的this指向该空对象
+    // 3.3 执行该函数
+    // 3.4 返回该对象
+
+    // 下面这个返回什么?
+    function Pig() {
+        this.age = 22;
+        return 'abc';
+    }
+    var pig = new Pig();
+    console.log(pig); // 返回的是Pig对象
+    // 因为函数作为构造函数运行时,return 后面的是被忽略的,还是返回对象,所以构造函数不要写return
+
+    // 4. 函数通过call,和apply调用
+    function t(num) {
+        alert('我的真实年龄是' + this.age);
+        alert('但我一般告诉别人我' + (this.age + num));
+    }
+    var human = {name:'lisi', age:28};
+    human.t = t;
+    human.t(-10); // this指向了human,但是human多了一个方法
+
+    // 接下来不把t赋给human的属性,也能把this指向human
+    // 通过call, 语法: 函数.call(对象,参数1,参数2,...参数N);
+    var wangwu = {name:'lisi', age:38};
+    t.call(wangwu,-10);
+    // 通过call调用时,this会被动态绑定到指定的对象上
+
+    //call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的,换句话说,就是为了改变函数体内部 this 的指向。
+</script>
+</body>
+</html>

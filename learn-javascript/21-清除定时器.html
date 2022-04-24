@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>清除定时器</title>
+</head>
+<body>
+    <input type="button" name="time" value="5" /><br/>
+    <img src="images/炸弹.jpg" alt="炸弹" title="炸弹" />
+
+<script>
+    function boom() {
+        // 获取input的value并-1
+        var time = parseInt(document.getElementsByName('time')[0].value) - 1;
+        document.getElementsByName('time')[0].value = time;
+
+        // 如果time < 0 则爆炸
+        if(time < 0){
+            document.getElementsByTagName('img')[0].src = "images/爆炸.png";
+
+            // 清除指定定时器,clearInterval,同理,还有clearTimeout
+            window.clearInterval(interval1);
+        }
+    }
+
+    // 定时器有返回值,想要清除定时器,就必须给予返回值
+    var interval1 = window.setInterval('boom()', 1000);
+</script>
+</body>
+</html>

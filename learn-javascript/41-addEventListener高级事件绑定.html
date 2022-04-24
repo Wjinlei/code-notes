@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addEventListener高级事件绑定</title>
+</head>
+<body>
+    <a href="#" id="test">点击测试</a>
+
+<script>
+    // 前面学过2种绑定事件的方式,这里不再赘述
+
+    // 1. 直接在html标签中写
+
+    // 2. DOM对象的属性方式
+        // 这种方式有个问题,在多人开发时,如果两个人对同一个对象的属性都绑定了函数,那前者就会被后者覆盖
+        // 例如:
+        //     document.getElementById('test1').onclick = function (ev) { alert('hello'); };
+        //     document.getElementById('test1').onclick = function (ev) { alert('world'); };
+
+    // 3. addEventListener
+        // 它就可以绑定多个事件,它是W3C中的标准
+
+    var test = document.getElementById('test');
+    // 语法: DOM对象.addEventListener(要绑定到哪个事件上?, 发生事件要执行什么函数?, 如何监听这个事件?);
+    // 关于第三个参数,如何监听这个事件? 如果为true则表示捕捉模型,false或者不填,表示冒泡模型,但如果用冒泡模型推荐不要省略false
+    // 关于第三个参数详细,请参看下一节
+    test.addEventListener('click',function () {alert('第一个addEventListener');}, false); // 注意事件名一律不带on
+    test.addEventListener('click',function () {alert('第二个addEventListener');}, false); // 注意事件名一律不带on
+    test.addEventListener('click',function () {alert('第三个addEventListener');}, false); // 注意事件名一律不带on
+
+    // 可以看到默认执行顺序是按照绑定顺序从上到下执行
+
+</script>
+</body>
+</html>

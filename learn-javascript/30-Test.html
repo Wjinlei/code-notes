@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>30作用域练习</title>
+</head>
+<body>
+
+<script>
+
+    // 请分别打开注释测试
+
+    // 示例1: 下面的str1和str2的结果分别是什么?
+    // var str1 = 'global';
+    // function t1() {
+    //     console.log(str1); // global
+    //     console.log(str2); // str2 is not defined
+    //     str2 = 'local';
+    // }
+    // t1();
+
+    // 示例2: 下面的str1和str2的结果分别是什么?
+    var str1 = 'global';
+    function t2() {
+        console.log(str1); // global
+        console.log(str2); // undefined
+        var str2 = 'local';
+    }
+    t2();
+
+    // 疑惑: 为什么示例2 str2 只是加了一个var 就不报错了? 就变成undefind了?
+
+    // 答: 这是JS的执行流程有关
+    // JS是自上而下执行
+    // 但是:
+    // JS在执行函数之前会先分析这个函数,看看里面有没有声明变量(这个步骤叫做词法分析),然后再执行该函数。
+
+    // 对于示例2:
+    // 第一步:
+    //     JS先看函数中有没有声明变量,发现var str2,那么就表示声明了str2,只不过这时候函数还没有执行,所以它的值是undefined
+    // 第二步:
+    //     执行函数
+    //     console.log(str1); // global
+    //     console.log(str2); // 因为这是str2还没有赋值,所以undefind
+    //     var str2 = 'local'; // 这时候str2 = 'local'
+
+    // 对于示例1:
+    //     第一步:
+    //         JS没有发现var,所以就表示没有声明变量
+    //     第二步:
+    //         执行函数
+    //         console.log(str1); // global
+    //         console.log(str2); // 因为第一步没有发现变量声明,所以直接 str2 is not defined 报错就不再继续向下执行
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>私有属性与封装</title>
+</head>
+<body>
+
+<script>
+    // 用构造函数来创建对象
+    function Dog() {
+        this.leg = 4;
+        this.bark = function () {
+            alert('汪汪汪汪');
+        }
+    }
+
+    var blackdog = new Dog();
+    blackdog.bark();
+    alert(blackdog.leg);
+    // 此处并没有被封装,因为外界可以直接访问内部的属性
+
+    // 所谓封装就是开放一部分,封闭一部分。通过开放部分间接访问私有部分
+
+    // 那么JS是如何做封装的呢? 答:闭包
+    function Dog2() {
+        // 待隐藏的变量不要加this
+        var leg = 4;
+
+        // 通过开放部分间接访问私有部分
+        this.showLeg = function () {
+            return leg;
+        };
+
+        // 通过开放部分间接访问私有部分
+        this.setLeg = function (num) {
+            leg = num;
+        }
+    }
+
+    var adog = new Dog2();
+    alert(adog.leg); // 非this的属性不会在对象中,这就是私有属性
+
+    alert(adog.showLeg());
+    adog.setLeg(6);
+    alert(adog.showLeg());
+
+    // 以上这种形式就是封装
+
+    // 总结:
+    // 封装就是 私有属性 + 开放方法
+</script>
+</body>
+</html>

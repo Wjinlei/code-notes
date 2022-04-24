@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>如何操作对象</title>
+</head>
+<body>
+<img src="images/lamp_bulb_off.png" alt="灯泡关" title="灯泡关" style="width: 300px;height:400px;" onclick="operations();"/>
+
+<script>
+    function operations() {
+        // 对于标签的属性,我们只需要在找到其对象后使用 对象.属性名 即可操作该标签的对应属性
+        // 但也有例外,如class属性,就不能用 对象.class 而是 对象.className
+        var lamp_bulb = document.getElementsByTagName('img')[0];
+        lamp_bulb.src = "images/lamp_bulb_on.png"; // 等于 <img src="images/lamp_bulb_on.png"
+
+        // 对标标签的css,我们可以通过 对象.style.css属性 来设置其css属性
+        // 但也有例外,如border-top-style这类带横线的属性,就不能使用 对象.style.border-top-style来设置
+        // 而是 对象.style.borderTopStyle,把横线去除并横线后的第一个字母大写就ok了
+        lamp_bulb.style.width = parseInt(lamp_bulb.style.width) + 5 + 'px';
+        lamp_bulb.style.height = parseInt(lamp_bulb.style.height) + 5 + 'px';
+
+        //parseInt是一个全局函数,不属于哪个对象。它可以把字符串中的数字部分转化成int类型
+    }
+</script>
+</body>
+</html>

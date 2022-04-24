@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS的面向对象</title>
+</head>
+<body>
+
+<script>
+    // 在js中,有对象,没有类(但有构造函数),因此,有人说js是"基于对象",而不是"面向对象"。
+
+    // 对此我持保留态度,js是一门很灵活的语言(争论这个问题就好比问 先有鸡? 还是 先有蛋?)
+
+    /*
+    比如很多语言中,都是由类延伸出对象 类-->对象
+    而在js中,对象并不依赖类而存在,这是js第1个灵活的地方(先有鸡还是先有蛋?是否鸡就一定要由鸡蛋孵出来?)
+    */
+
+    // js中的对象只是一个"属性字典(json格式)",就相python中的字典,因此js中的对象可以直接造。
+    var obj = {}; // 空对象
+
+    var dog = {name: 'GouGou', leg: 4, tail: 1}; // 有属性的对象
+
+    var dog2 = {
+        name: 'GouGou',
+        leg: 4,
+        tail: 1,
+        say: function () { // 有方法的对象
+            alert('WangWangWang~~~')
+        }
+    };
+
+    dog2.say();
+    // 从上面的例子可以看出,js的对象可以直接造,其格式{k:v,k:v}这种格式称之为json格式的对象
+
+    // js对象的属性,也是可以任意增加删除和修改的
+    // 增加
+    dog2.header = 1;
+    console.log(dog2.header);
+
+    // 删除
+    delete dog2.say;
+    dog2.say(); //dog2.say is not a function
+
+    // 修改
+    dog2.name = 'huzi';
+    console.log(dog2.name);
+
+    // 总结:
+    // js中的对象其实就是"一组属性与值的集合",属性可以任意增加修改删除,方法和属性不必区分
+    // js中的对象不依赖类,可以直接造
+
+    // js中一样也有 封装、继承、多态、静态方法等面向对象的内容
+
+</script>
+</body>
+</html>

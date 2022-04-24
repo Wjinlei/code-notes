@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件对象</title>
+</head>
+<body>
+<!--什么是事件对象?-->
+<!--答:-->
+<!--当事件发生的瞬间,发生位置、时间、鼠标按键、触发的节点等信息都会被打包成1个对象-->
+<!--此对象(就叫做事件对象),系统自动传递给事件处理函数的第一个参数-->
+
+    <img src="images/水猿大圣.png" alt="水猿大圣.png" title="水猿大圣.png" />
+
+<script>
+    document.getElementsByTagName('img')[0].onmouseover = function (ev) {
+        console.log(ev);
+
+        // 当时点的是哪一个具体的对象
+        console.log(ev.target);
+        // 具体ev各个属性的含义可参考w3c 手册
+
+        // 需要注意的是,事件对象的各个属性在不同的浏览器可能不兼容,不通用
+        // 所以使用的时候需要注意
+
+        // 还有一种写法,遇到时不要惊讶
+        // ev = window.event || ev; //这样写是因为在低版本ie中事件是window.event属性上
+    }
+
+</script>
+</body>
+</html>

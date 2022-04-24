@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取非内联style的值</title>
+
+    <style>
+        img{
+            width: 300px;
+            height: 400px;
+        }
+
+    </style>
+
+</head>
+<body>
+<img src="images/lamp_bulb_off.png" alt="灯泡关" title="灯泡关" onclick="operations();"/>
+
+<script>
+    // 对于低版本IE浏览器,它使用的是currentStyle这个函数,而IE9以上使用的是getComputedStyle这个函数
+    // 所以为了兼容,我们封装一个函数
+    function getStyle(obj, value) {
+        // 先判断currentStyle这个属性是否存在,如果存在则返回currentStyle[value],否则返回getComputedStyle
+        return obj.currentStyle ? obj.currentStyle[value] : window.getComputedStyle(obj, null)[value];
+        // 关于getComputedStyle的第二个参数,其实是指明伪类,例如 :hover,如果没有则填null
+    }
+
+    function operations() {
+        // 无法通过 对象.style.属性值 来获取非内联style的值,那么该怎么办呢?
+        var lamp_bulb = document.getElementsByTagName('img')[0];
+        var lamp_bulb_width = getStyle(lamp_bulb, 'width');
+        var lamp_bulb_height = getStyle(lamp_bulb, 'height');
+
+        // 因为getComputedStyle返回的值是只读的,所以我们还需要通过 重新赋值来改变它
+        lamp_bulb.style.width = parseInt(lamp_bulb_width) + 5 + 'px';
+        lamp_bulb.style.height = parseInt(lamp_bulb_height) + 5 + 'px';
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>暴力操作节点innerHTML</title>
+</head>
+<body>
+    <input type="button" value="初始化春夏秋冬" onclick="init();" />
+    <input type="button" value="添加春夏秋冬" onclick="add();" />
+    <input type="button" value="读取春夏秋冬" onclick="read();" />
+    <ul></ul>
+<script>
+    function init() {
+        var ul = document.getElementsByTagName('ul')[0];
+        ul.innerHTML = '<li>春</li><li>夏</li><li>秋</li><li>冬</li>';
+    }
+
+    function add() {
+        var ul = document.getElementsByTagName('ul')[0];
+        ul.innerHTML += '<li>春</li><li>夏</li><li>秋</li><li>冬</li>';
+    }
+
+    function read() {
+        var ul = document.getElementsByTagName('ul')[0];
+        alert(ul.innerHTML);
+    }
+
+    // 总结:
+    // innerHTML不是W3C的标准,但各浏览器支持的很好,所以为了方便,可以使用innerHTML
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习:抓不到的猴子</title>
+    <style type="text/css">
+        img{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <img src="images/小猴子.jpg" alt="小猴子.jpg" title="小猴子.jpg" />
+
+<script>
+    document.getElementsByTagName('img')[0].onmouseover = function (ev) {
+        this.style.left = ev.pageX + 30 + 'px';
+        this.style.top = ev.pageY + 30 + 'px';
+    };
+
+    document.getElementsByTagName('img')[0].onclick = function (ev) {
+        alert('抓到你了!')
+    };
+</script>
+
+<!--总结: 记住几个常用的事件对象属性 -->
+    <!--pageX 代表事件发生时鼠标x值-->
+    <!--pageY 代表事件发生时鼠标y值-->
+    <!--target 代表点击了哪个DOM对象-->
+    <!--srcElement 代表事件发生的所在DOM对象-->
+</body>
+</html>

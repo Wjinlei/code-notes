@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型冒充和复制继承</title>
+</head>
+<body>
+
+<script>
+    // JS中除了原型继承方法,还可以通过原型冒充和复制继承来达到继承的效果
+
+    // 原型冒充
+    function Cat(leg,tail) {
+        this.leg = leg;
+        this.tail = tail;
+
+        this.climb = function () {
+            alert('我会爬树!');
+        }
+    }
+
+    function Tiger(leg,tail,color) {
+        this.parent = Cat; //把父类的构造函数引入到一个parent属性上
+
+        // 执行parent,此时parent属性就等于Cat方法
+        this.parent.apply(this,arguments); //利用apply可以一次性把参数都传递进去
+
+        // 执行完后parent方法就没有必要继续存在了
+        delete this.parent;
+
+        this.color = color;
+    }
+
+    // 此时这个tiger对象就是由Cat和Tiger共同作用过的对象
+    var tiger = new Tiger(4,1,'white');
+    tiger.climb();
+    console.log(tiger);
+
+    
+    // 复制继承,就是把父对象的所有属性复制到自身的对象上
+    function Dog(color) {
+        this.color = color;
+
+        // 利用extend方法,传一个parent(你要复制的对象)
+        this.extend = function (parent) {
+            // 循环遍历这个对象中的所有属性
+            for(var key in parent){
+                // 然后把该对象的属性复制到自身,这里不能使用 . 的方式,因为会冲突,所以要使用[] 的方式
+                this[key] = parent[key];
+            }
+        }
+    }
+
+    var dog = new Dog();
+    dog.extend(new Cat(4,1));
+    console.log(dog);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IE事件模型兼容性问题</title>
+</head>
+<body>
+    <a href="#" id="test">点击测试</a>
+
+    <input type="button" value="打印str" id="btm"/>
+<script>
+
+    function $(id){
+        return document.getElementById(id);
+    }
+
+    // 如下代码在ie9以下就不好使。
+    // $('test').addEventListener('click',function () {alert('addEventListener');}, false);
+
+    // ie9以下处理
+    // ie9以下需要知道的几点
+    // 1: IE9以下使用attachEvent() 而不是 addEventListener()
+    // 2: IE9以下事件要加on
+    // 3: IE9以下还有个毛病,先绑定的后触发
+
+    // attachEvent 没有第三个参数,它不支持捕获事件,它只支持冒泡事件
+    $('test').attachEvent('onclick',function () {alert('第一个addEventListener');});
+    $('test').attachEvent('onclick',function () {alert('第二个addEventListener');});
+    $('test').attachEvent('onclick',function () {alert('第三个addEventListener');});
+
+    // 4: 还有个最严重的毛病,就是this指向的问题,在W3C中,this指向对象本身,而IE模型中,this指向window
+    var str = 'test';
+
+    $('test').attachEvent('onclick',function () {
+        this.str = '测试测试'; // 修改自身的str
+        $('btm').value = '再次点击看看结果';
+        this.style.backgroundColor = '#FF832C'; // 无法修改css属性
+    });
+
+    document.getElementById('btm').onclick = function (ev) {
+        // 6: IE6、7、8在DOM0级不支持自动传入ev,需要使用window.event,在DOM2级上支持自动传入ev
+        // 关于DOM等级,请自行谷歌相关知识
+        console.log(ev);
+        console.log(window.event);
+        var e = ev || window.event;
+        alert(window.str); // 看看全局变量有没有被修改?
+    };
+
+    // 总结:
+    // 1: IE9以下中使用attachEvent() 而不是 addEventListener()
+    // 2: IE9以下中事件要加on
+    // 3: IE9以下还有个毛病,先绑定的后触发
+    // 4: IE9以下模型中,this指向window
+    // 5: IE9以下取消事件用 detachEvent() 而不是 removeEventListener()
+
+    // 6: IE6、7、8有可能不支持自动传入ev,需要使用window.event
+        // var e = ev || window.event; 利用这句话就可以解决,那么ev对象将被操作到e中
+    // 7: IE6不支持捕捉模型
+</script>
+</body>
+</html>

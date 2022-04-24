@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继承练习</title>
+</head>
+<body>
+
+<script>
+    // 给所有的对象添加一个功能
+
+    function Pig() {
+        this.eat = function () {
+            alert('我吃我吃我吃吃吃');
+        }
+    }
+
+    function Cat() {
+        this.climb = function () {
+            alert('我会爬树');
+        }
+    }
+    // 给Object的原型添加一个属性即可
+    Object.prototype.say = function () {
+        alert('我会说话')
+    };
+
+    var pig = new Pig();
+    var cat = new Cat();
+
+    // 这样猪就可以说话了
+    pig.say();
+    // 猫也可以说话了
+    cat.say();
+
+</script>
+</body>
+</html>

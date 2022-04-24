@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a href="#" id="test">点击测试</a>
+
+</body>
+<script>
+    // 问题:
+    // 1: IE9以下中使用attachEvent() 而不是 addEventListener() // 已解决
+    // 2: IE9以下中事件要加on // 已解决
+    // 3: IE9以下还有个毛病,先绑定的后触发 // 已解决
+    // 4: IE9以下模型中,this指向window // 已解决
+    // 5: IE9以下取消事件用 detachEvent() 而不是 removeEventListener()
+
+    function myAddEventListener(obj, event, func) {
+        if(!obj['eventAarray']){
+            obj['eventAarray'] = [];
+        }
+        // 每次调用函数,都把func放入obj的一个数组中
+        obj['eventAarray'].push(func);
+
+
+        // 如果你传递带有on的事件,则先给你转换成不带on的
+        if(event.toLowerCase().indexOf('on') !== -1){
+            event = event.toLowerCase().substr(2, event.length);
+        }
+
+        // 然后检测是否支持addEventListener,如果支持就直接使用这个
+        if(obj.addEventListener){
+            obj.addEventListener(event, func, model);
+        }else{ // 否则表示不支持addEventListener,将使用attachEvent
+            // 加上on
+            if(event.toLowerCase().indexOf('on') === -1){
+                event = 'on'.concat(event);
+            }
+            obj.attachEvent(event, function () {
+                // 待执行的事件函数从eventArray数组中取出
+                func = obj['eventAarray'].shift();
+                // 解决this指向问题,将this指向你obj
+                func.apply(obj, arguments);
+                // 用完后还要给放回去
+                obj['eventAarray'].push(func);
+            });
+        }
+    }
+
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+    /**
+     * 函数参数说明:
+     * obj: DOM对象
+     * event: 事件(加不加on都无所谓)
+     * func: 处理函数
+     * model: 事件模型 false / true
+     */
+    // 测试1、2、3
+    myAddEventListener($('test'), 'onclick', function () {alert('第一个myAddEventListener');});
+    myAddEventListener($('test'), 'onclick', function () {alert('第二个myAddEventListener');});
+    myAddEventListener($('test'), 'onclick', function () {alert('第三个myAddEventListener');});
+
+    // 测试this指向
+    myAddEventListener($('test'), 'onclick', function () {
+        this.style.backgroundColor = 'orange';
+    });
+
+
+    // 问题5 比较简单就不再写了,思路类似
+</script>
+</html>

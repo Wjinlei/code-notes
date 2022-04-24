@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>var的重要性</title>
+</head>
+<body>
+<script>
+    window.str = 'union';
+    function t1() {
+        function t2() {
+            // var str = 'china'; /*如果自己没有str,则往上找,直到找到*/
+            str = 'china';
+            alert(str);
+        }
+        t2();
+    }
+
+    t1();
+    alert(window.str); /*发现,如果不加var就是给变量赋值,而不是声明变量,加var就是声明变量*/
+
+    // 所以不加var会污染全局,这就叫做污染全局
+</script>
+</body>
+</html>

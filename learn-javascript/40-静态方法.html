@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>静态方法</title>
+</head>
+<body>
+
+<script>
+    function Tools() {
+        this.say = function () {
+            alert('Tools is run...');
+        }
+    }
+
+    // 给Tools函数赋值,这个方式是属于这个 "函数"的,而不属于对象
+    Tools.test = function () {
+        alert('测试方法')
+    };
+
+    var tools = new Tools();
+    console.log(tools); // 对象中并不存在test方法
+
+    // 静态方法调用不需要创建对象
+    Tools.test();
+    
+</script>
+</body>
+</html>

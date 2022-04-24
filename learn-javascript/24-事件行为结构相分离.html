@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件行为结构相分离</title>
+
+    <style type="text/css">
+        #div2{
+            width: 300px;
+            height: 100px;
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="images/结构行为样式相分离图解.png" alt="结构行为样式相分离图解.png" title="结构行为样式相分离图解.png" />
+
+    <!--下面这个div就是结构行为样式没分离的示例-->
+    <div onclick="func1();" style="width: 300px; height:100px; border: 2px solid blue;">这个div就是结构行为样式没分离的示例</div>
+
+    <br/>
+
+    <!--下面这个div就是结构行为样式相分离的示例-->
+    <div id='div2'>这个div就是结构行为样式相分离的示例</div>
+<script>
+    function func1() {
+        document.getElementsByTagName('div')[0].style.border = '2px solid red';
+    }
+
+    // onclick就是对象的属性
+    document.getElementById('div2').onclick = function() {
+        // document.getElementById('div2').style.border = '2px solid red';
+
+        // 此处这个this代指 document.getElementById('div2')
+        this.style.border = '2px solid red';
+    }
+</script>
+
+<!--总结:-->
+<!--标签在DOM的表现是对象,那么事件其实也是对象的属性,所以我们直接给属性赋值即可-->
+</body>
+</html>

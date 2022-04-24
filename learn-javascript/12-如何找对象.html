@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>如何找到对象</title>
+</head>
+<body>
+    <h1>h1标题</h1>
+    <div id="div_id">
+        <p>p1</p>
+        <p>p2</p>
+        <p>p3</p>
+    </div>
+    <div class="div_class">class div</div>
+    <input type="text" name="username" id="" value="poly" />
+
+<script>
+    // 通过id来查找,返回的是一个"对象"
+    var id_div = document.getElementById('div_id');
+    console.log(id_div); // [object HTMLDivElement]
+
+    // 通过标签名来查找,返回的是一个"对象的集合",即使只有1个对象,也是返回"对象集合"
+    var ps = document.getElementsByTagName('p');
+    console.log(ps); // [object HTMLCollection] 它是一个对象集合
+    console.log(ps[0]);
+
+    // 对于表单元素,也可以按照name来查询,返回的是一个"对象集合"
+    var username = document.getElementsByName('username');
+    console.log(username); // [object NodeList] 它是一个对象集合
+    console.log(username[0].value);
+
+    // 通过类名来查找,返回的是"对象集合"
+    var class_div = document.getElementsByClassName('div_class');
+    console.log(class_div); // [object HTMLCollection] 它是一个对象集合
+
+    // 还可以通过一个对象来找它的"孩子" 或者 "它爹"
+        // 找它儿
+        var childrens = document.getElementById('div_id').children;
+        console.log(childrens);
+
+        // 找它爹
+        var parents = document.getElementsByTagName('p')[0].parentNode;
+        console.log(parents);
+</script>
+</body>
+</html>

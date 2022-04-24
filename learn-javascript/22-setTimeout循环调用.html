@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>setTimeout循环调用</title>
+</head>
+<body>
+    <input type="button" name="time" value="5" /><br/>
+    <img src="images/炸弹.jpg" alt="炸弹" title="炸弹" />
+
+<script>
+    var clock = null;
+    function boom() {
+        var time = parseInt(document.getElementsByName('time')[0].value) - 1;
+        document.getElementsByName('time')[0].value = time;
+
+        if(time < 0){
+            document.getElementsByTagName('img')[0].src = "images/爆炸.png";
+            clearTimeout(clock);
+        }else{
+            // 在被调用的函数中循环调用
+            setTimeout('boom()', 1000);
+        }
+    }
+
+    // 利用setTimeout来实现setInterval的功能,也就是setTimeout循环调用
+    clock = window.setTimeout('boom()', 1000);
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浏览器的window对象</title>
+</head>
+<body>
+<!--注意: window对象是浏览器宿主对象,和JS无关-->
+<input type="button" value="前进" onclick="javascript:window.history.forward();" />
+<input type="button" value="后退" onclick="javascript:window.history.back();" />
+<script>
+    // window 对象方法
+        // window.alert(message); 弹出消息框
+        // window.confirm(message); 弹出带确认的消息框,没什么鸟用,了解即可
+        // window.prompt(message[, defaultstr]); 更没什么鸟用
+        // window.close(); 关闭页面
+        // window.print(); 打印这个页面,没什么鸟用
+
+        // window.setInterval(code,millisec) 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。
+            // code	要调用的函数或要执行的代码串。
+            // millisec	周期性执行或调用 code 之间的时间间隔，以毫秒计。
+
+        var obj = window.setInterval("alert('我会被一直调用,直到clearInterval或关闭窗口')",1000);
+
+        // window.clearInterval(obj) 清除定时器对象
+
+        //setTimeout(code,millisec) 方法用于在指定的毫秒数后调用函数或计算表达式。
+
+        var id = window.setTimeout("window.clearInterval(obj)", 4000)
+
+        //clearTimeout(id_of_settimeout) 方法可取消由 setTimeout() 方法设置的 timeout。
+            // id_of_settimeout	由 setTimeout() 返回的 ID 值。该值标识要取消的延迟执行代码块。
+
+    // navgator 浏览器信息子对象
+        // appCodeName 内部代码
+        // appName 浏览器名称
+        // appVersion 浏览器版本
+        // platform 操作系统类型
+        // userAgent 用户代理信息
+        // cookieEnabled 是否支持cookie
+        console.log(window.navigator.appName);
+        console.log(window.navigator.cookieEnabled);
+
+    // location 地址栏子对象
+        //host 主机 地址:端口
+        //port 端口
+        //href 当前地址栏上的链接
+        //pathname 路径
+        //protocol 协议
+        //search 查询字符串
+        //assign(url) 页面跳转
+        console.log(window.location.host);
+        console.log(window.location.href);
+        console.log(window.location.port);
+        console.log(window.location.pathname); //除去地址:端口的所有内容
+
+        // window.location.assign("https://www.baidu.com")
+
+    //history 历史记录子对象
+        //length: 历史记录的数目
+        //forward() 前进
+        //back() 后退
+        //go() 方法可加载历史列表中的某个具体的页面。
+            // 该参数可以是数字，使用的是要访问的 URL 在 History 的 URL 列表中的相对位置。
+            // (-1上一个页面，1前进一个页面)。或一个字符串，字符串必须是局部或完整的URL，
+            // 该函数会去匹配字符串的第一个URL。
+        console.log(window.history.length);
+
+    //screen 屏幕子对象
+        //height 高度
+        //width 宽度
+        //availHeight 可用高度
+        //availWidth 可用宽度
+        //colorDepth 颜色
+        console.log(window.screen.width);
+        console.log(window.screen.height);
+        console.log(window.screen.availWidth);
+        console.log(window.screen.availHeight);
+        console.log(window.screen.colorDepth);
+</script>
+</body>
+</html>

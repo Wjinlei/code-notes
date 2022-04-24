@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>arguments详解</title>
+</head>
+<body>
+<script>
+    // arguments是什么?
+    // 答: 是一个对象,是一个长得很像数组的对象
+    //
+    // arguments的内容是什么?
+    // 答:　arguments是函数运行时的实参列表
+
+    (function (d, e, f) {
+        console.log(arguments);
+        // Arguments(3)
+        // 0:"hello"
+        // 1:"world"
+        // 2:"!"
+        // callee:ƒ (d, e, f)
+        // length:3
+        // Symbol(Symbol.iterator):ƒ values()
+        // __proto__:Object
+        console.log(d);
+        console.log(e);
+        console.log(f);
+        console.log(arguments[0]);
+        console.log(arguments[1]);
+        console.log(arguments[2]);
+    })('hello', 'world', '!');
+
+
+
+    (function () {
+        console.log(arguments);
+        // 在一些其他语言中,实参的值只能通过形参拿到
+        // 而在JS中把所有的实参收集起来形成一个arguments对象
+        // 你就是不定义形参,一样也可以拿到实参的值
+
+        // Arguments(3)
+        // 0:"hi"
+        // 1:"js"
+        // 2:"!"
+        // callee:ƒ ()
+        // length:3
+        // Symbol(Symbol.iterator):ƒ values()
+        // __proto__:Object
+
+        console.log(arguments[0]);
+        console.log(arguments[1]);
+        console.log(arguments[2]);
+    })('hi', 'js', '!');
+
+
+    // 修改arguments的[索引值] 就相当于改变参数值
+    (function (d, e, f) {
+        arguments[1] = 'javaScript';
+        console.log(d);
+        console.log(e);
+        console.log(f);
+    })('hello', 'world', '!');
+
+    // 通过arguments对象的length属性就可以获取函数在运行时的实参个数
+    (function (d, e, f) {
+        console.log(arguments.length);
+    })('hello', 'world', '!');
+
+    // arguments对象的callee属性表示"当前运行的函数"
+    (function (d, e, f) {
+        console.log(arguments.callee);
+        // ƒ (d, e, f) {
+        //     console.log(arguments.callee);
+        // }
+    })('hello', 'world', '!');
+
+    // callee属性有什么用呢?
+    // 递归计算1 到 n的和
+    function t1(n) {
+        if(n <= 1){
+            return 1;
+        }else{
+            return n + t1(n-1);
+        }
+    }
+    alert(t1(100));
+
+    // 利用callee属性来实现
+    alert((function (n) {
+        if(n <= 1){
+            return 1;
+        }else{
+            return n + arguments.callee(n-1);
+        }
+    })(100));
+
+</script>
+</body>
+</html>

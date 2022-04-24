@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开关灯泡</title>
+</head>
+<body>
+    <img id="on" src="images/lamp_bulb_on.png" alt="灯泡亮" onclick="on_off();" />
+
+<script>
+    function on_off() {
+        // 注意document是window的子对象,由于作用域的原因,所以window可以省略不写
+        var lamp_bulb = window.document.getElementById('on');
+
+        // 如果当前src包含on,证明当前src是 lamp_bulb_on.png 这张图片
+        if(lamp_bulb.src.indexOf('on') >= 0){
+            // 所以就把它改成 lamp_bulb_off.png 这张图片
+            lamp_bulb.src = "images/lamp_bulb_off.png";
+            // 否则证明它当前是 lamp_bulb_off.png 这张图片
+        }else{
+            // 所以就把它改成 lamp_bulb_on.png 这张图片
+            lamp_bulb.src = "images/lamp_bulb_on.png";
+        }
+    }
+</script>
+</body>
+</html>

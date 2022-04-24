@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件停止传播与效果阻止</title>
+    <style type="text/css">
+        #test1{
+            width: 800px;
+            height: 800px;
+            border: 2px solid red;
+        }
+
+        #test2{
+            width: 600px;
+            height: 600px;
+            border: 2px solid green;
+            margin: auto;
+        }
+
+        #test3{
+            width: 400px;
+            height: 400px;
+            border: 2px solid blue;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="test1">
+        中国
+        <div id="test2">
+            北京
+            <div id="test3">海淀</div>
+        </div>
+    </div>
+
+    <form action="#" id="fm">
+        <input type="text" name="username" />
+        <input type="submit" value="效果阻止阻止提交效果" />
+    </form>
+<script>
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+    // 阻止事件传播
+    // 思考,事件(捕捉/冒泡)的过程中,能否停止事件传播?
+    // 比如下面例子:被海淀捕捉后,就结束,不再向外传播
+
+    $('test1').addEventListener('click',function () {alert('中国');}, false);
+    $('test2').addEventListener('click',function () {alert('北京');}, false);
+    $('test3').addEventListener('click',function (ev) {
+        alert('海淀');
+        ev.stopPropagation(); // 通过事件对象的 stopPropagation 方法就可以停止传播,这是W3C的标准
+        // 如果是IE8及一下,则需要使用 ev.cancelBubble = true 来完成
+    }, false);
+
+
+    // 阻止效果
+    $('fm').addEventListener('submit', function (ev) {
+        var childrens = this.children;
+        if(childrens[0].value === ''){
+            // return false; // 仅仅return false 并不能阻止效果,数据还是被提交了.因为return false仅仅只是这个函数return。
+            ev.preventDefault(); // WC3标准 preventDefault 阻止效果
+            // 如果是IE8及一下,则需要使用 ev.returnValue = false 来完成
+        }
+    },false)
+
+    // 总结:
+    // 阻止事件传播: ev.stopPropagation();
+    // 阻止效果效果: ev.preventDefault();
+</script>
+</body>
+</html>

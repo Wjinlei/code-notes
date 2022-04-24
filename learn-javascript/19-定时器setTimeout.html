@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器setTimeout</title>
+</head>
+<body>
+    <!--定时器setTimeout和console.log这类功能类似,它不属于js的内容,它是浏览器带给我们的功能-->
+    <img src="images/炸弹.jpg" alt="炸弹" title="炸弹" />
+
+<script>
+    function boom() {
+        document.getElementsByTagName('img')[0].src = "images/爆炸.png";
+    }
+
+    // 注意要执行的函数要用分号包起来
+    window.setTimeout('boom()', 3000);
+</script>
+</body>
+</html>

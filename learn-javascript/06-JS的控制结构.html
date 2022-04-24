@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS的控制结构</title>
+</head>
+<body>
+
+<script>
+    // for循环,初始值;循环条件;增量
+    var arr = ['春', '夏', '秋', '冬'];
+    for (var i=0; i<arr.length; i++){
+        console.log(arr[i]);
+    }
+
+    // while循环,条件满足则进入循环
+    var i = 0;
+    while (i<arr.length){
+        console.log(arr[i]);
+        i++;
+    }
+
+    // for循环对象
+    var obj = {name:'张三', age:22};
+    for (var k in obj){ // 循环obj,把键分别赋给k
+        console.log(k);
+        // console.log(obj.k); // 这是错误的取值方法,因为它相当于obj的k属性,而你是想取k变量的值
+
+        // 有时候.语法不灵了,我们就要用[]语法
+        console.log(obj[k]);
+    }
+</script>
+</body>
+</html>

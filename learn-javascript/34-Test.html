@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this练习题</title>
+</head>
+<body>
+    <script>
+        var name = 'window';
+
+        var obj = {name: 'lisi', t: function(){alert(this.name)}};
+        var dog = {name: 'huzi'};
+
+        // 第一题:
+        obj.t(); // lisi
+        // .t() 被 obj 调用,所以 lisi
+
+
+        // 第二题:
+        var tmp = obj.t;
+        tmp(); // window
+        // tmp() 被 window 调用 所以 window
+
+
+        // 第三题:
+        dog.t = obj.t;
+        dog.t(); // huzi
+        // .t() 被 dog 调用,所以 huzi
+
+
+        // 第四题:
+        (dog.t = obj.t)(); // window
+        // dog.t 被 () 调用, 所以 window
+
+
+        // 第五题:
+        dog.t.call(obj); // lisi
+        // call改变了函数体内部 this 的指向,指向了obj,所以lisi
+
+
+        // 总结:
+        // 就看最终函数是被谁调用的? 被谁调用this就是谁
+
+
+        /*
+        小知识:
+        有一些有经验,但对js理解不深的同学说:
+        有this操作的(如 this.age = xx)的函数不能直接调用
+        而是要用new来调用? 这是为什么?
+
+        答:
+        其实是因为用普通的调用方法可能会造成污染全局,
+        因为直接调用,this会指向window,所以有可能会污染全局
+        */
+    </script>
+</body>
+</html>

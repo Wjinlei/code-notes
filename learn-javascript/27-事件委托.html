@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件委托</title>
+    <style type="text/css">
+        table{
+            width: 400px;
+            height: 400px;
+            border: 0;
+            border-collapse: collapse;
+        }
+
+        td{
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+
+<script>
+    // 需求: 如果想实现点击一个单元格,它的背景变成黑色该怎么办?
+
+    // 下面是用学过的知识来实现
+    // var tds = document.getElementsByTagName('td');
+    // var i = 0;
+    // while(i < tds.length){
+    //     tds[i].onclick = function() {
+    //         this.style.backgroundColor = 'black';
+    //     };
+    //     i++;
+    // }
+
+    // 上面的实现方法虽然达到了效果,但效率不高,因为所有的td都绑定了onclick,浪费内存
+    // 第二种方法,利用事件对象的target属性,我们知道target属性表示点击的具体对象,所以就可以利用它来达到这个效果
+    document.getElementsByTagName('table')[0].onclick = function (ev) {
+        // ev.target.style.backgroundColor = 'black';
+        // 但在低版本ie中并没有target属性,在低版本ie中是srcElement属性,所以考虑兼容性问题我们应该使用srcElement
+        ev.srcElement.style.backgroundColor = 'black';
+    }
+
+    // 总结:
+    // 利用上面的方法我们只绑定了一个onclick,
+    // 对于td来说相当于把事件委托给了父级元素来处理,
+    // 这种方式就叫做事件委托。
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addEventListener事件监听模型</title>
+    <style type="text/css">
+        #test1{
+            width: 800px;
+            height: 800px;
+            border: 2px solid red;
+        }
+
+        #test2{
+            width: 600px;
+            height: 600px;
+            border: 2px solid green;
+            margin: auto;
+        }
+
+        #test3{
+            width: 400px;
+            height: 400px;
+            border: 2px solid blue;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="test1">
+        中国
+        <div id="test2">
+            北京
+            <div id="test3">海淀</div>
+        </div>
+    </div>
+
+<script>
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+    // 观察下面效果,在海淀div点击了一下,那么这个点击的效果是从海淀到中国(由内到外)
+    $('test1').addEventListener('click',function () {alert('中国');}, false);
+    $('test2').addEventListener('click',function () {alert('北京');}, false);
+    $('test3').addEventListener('click',function () {alert('海淀');}, false);
+
+    // 打开注释,观察效果,在海淀div点击了一下,那么这个点击效果是从中国到海淀(由外到内)
+    // $('test1').addEventListener('click',function () {alert('中国');}, true);
+    // $('test2').addEventListener('click',function () {alert('北京');}, true);
+    // $('test3').addEventListener('click',function () {alert('海淀');}, true);
+
+    // 如果两个模型都使用,则捕捉模型优先级高,将被优先执行
+
+    // 总结:
+    // 由内到外
+    //     称为冒泡模型,一层一层向外执行
+    // 由外到内:
+    //     称为捕捉模型,一层一层向内执行,就好比你要去海淀,得先进入中国,再到北京,最后在到海淀。一层一层捕捉。
+    // 优先级:
+    //      捕捉模型 > 冒泡模型
+</script>
+</body>
+</html>

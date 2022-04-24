@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS的变量类型</title>
+</head>
+<body>
+<script>
+    // 数值类型
+    var a = 23;
+    var b = 3.13;
+
+    // 字符类型,单引号双引号都可以
+    var c = 'hello';
+    var d = "world";
+
+    // 布尔类型
+    var e = true;
+
+    // null类型
+    var f = null;
+
+    // undefined类型
+    var g = undefined;
+
+    // null是代表对象不存在, 在用DOM操作寻找DOM对象时,如果没找到,则返回null
+    // 如果一个基本类型变量没定义, 则为 undefined
+
+    // 数组类型,写法: "[]"号包围,","号隔开每一个值
+    // JS中,数组是索引类型,key是从0开始0,1,2,3,4,5,......
+    var h = ['春', '夏', '秋', '冬'];
+    console.log(h[0]); //数组的引用方式
+
+    // 对象类型(关联),对象类型没找到则返回null
+    var i = {name:'张三', age:22};
+
+    // 通过new关键字创建的也是对象类型
+    var j = new XMLHttpRequest();
+
+    console.log(i);
+    console.log(i.name); //对象类型的引用方式
+    console.log(i['name']); //也可以用数组的引用方式
+    console.log(j);
+
+
+</script>
+</body>
+</html>

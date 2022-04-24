@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS的运算符</title>
+</head>
+<body>
+
+    <script>
+        // 加减乘除
+        console.log(3 + 2);
+        console.log(3 - 2);
+        console.log(3 * 2);
+        console.log(4 / 2);
+
+        // 在JS中字符串拼接也用 "+" 号, 两个数字相加是加法,但一遇到字符就变成字符串拼接
+        console.log(3 + 'hello');
+        console.log(2 + 3 + 4 + 'hello' +　5 + 5 + 3 + 2); //9hello5532,一旦遇到非法字符,后面的一律变成拼接
+
+        // 取模(求余数)
+        console.log(3 % 2);
+
+        //JS中逻辑运算
+        var a = false;
+        var b = 6;
+        var c = true;
+        var d = (a || b || c);
+        console.log(d); //返回最早能判断出表达式结果的那个值
+        // 比如a是false,无法直接判读表达式结果,就判断下一个b
+        // b是6,6就是真,那么它就直接把6的值返回,不再继续判断
+        // 这个叫做短路
+
+        var e = false;
+        var f = 99;
+        console.log(e && f); //false,因为and是两个都为真,结果才为真,
+        // 所以这里第一个数是false,那么整个表达式的结果肯定就为假,
+        // 所以不用再继续判断了,直接返回false
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包计数器</title>
+</head>
+<body>
+
+<script>
+    // 需求:
+    // 多个人共同开发一个js程序,需要一个全局计数器
+    // 也就是多个人的函数共用一个计数器
+
+    // 解决办法:
+    // 1.
+        // 设立一个全局变量 window.count = 0; 调用的时候使用: ++window.count;
+        // 这个办法虽然可行,但是存在安全问题,当引入别人的js程序时,如果别人的js中也有一个 window.count = 'hello'
+        // 时候,我们的计数器就损坏了(所以要尽量避免使用全局变量)
+
+    // 2.
+        // 使用闭包维护一个别人污染不了的变量
+
+    // 第一版
+    function outer() {
+        var count = 0;
+        function inner() {
+            return ++count;
+        }
+        return inner;
+    }
+
+    var cnt = outer();
+    alert(cnt());
+    alert(cnt());
+    alert(cnt());
+
+
+    // 第二版
+    var cnt2 = (function () {
+        var count = 0;
+        return function () {
+            return ++count;
+        }
+    })();
+
+    alert(cnt2());
+    alert(cnt2());
+    alert(cnt2());
+
+    // 前面两版都有可能污染全局,因为cnt和cnt2不还是全局变量吗?
+    // 那怎么办? 答: jquery可以搞定它
+    $ = {}; // $在jquery中是一个全局变量,这里因为我们还没学jquery,所以用一个对象来模拟它
+    $.cnt = (function(){
+        var count = 0;
+        return function(){
+            return ++count;
+        }
+    })();
+    alert($.cnt());
+    alert($.cnt());
+    alert($.cnt());
+
+    // 还有一种办法就是利用个人命名空间来解决
+    // 其实就是把自己的变量,函数,等都放在一个对象里
+    var wjl = {}; // 跟团队说清楚,这是我的空间,别人不要用了
+    wjl.cnt = (function(){
+        var count = 0;
+        return function(){
+            return ++count;
+        }
+    })();
+    alert(wjl.cnt());
+    alert(wjl.cnt());
+    alert(wjl.cnt());
+
+    
+</script>
+</body>
+</html>

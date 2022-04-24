@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器setInterval</title>
+</head>
+<body>
+    <input type="button" name="time" value="5" /><br/>
+    <img src="images/炸弹.jpg" alt="炸弹" title="炸弹" />
+
+<script>
+    function boom() {
+        // 获取input的value并-1
+        var time = parseInt(document.getElementsByName('time')[0].value) - 1;
+        document.getElementsByName('time')[0].value = time;
+
+        // 如果time < 0 则爆炸
+        if(time < 0){
+            document.getElementsByTagName('img')[0].src = "images/爆炸.png";
+        }
+    }
+
+    // setInterval() 和 setTimeout()的区别是什么?
+        // setTimeout() 是多少秒后执行一次
+        // setInterval() 是每隔多少秒执行一次
+    window.setInterval('boom()', 1000);
+</script>
+</body>
+</html>
