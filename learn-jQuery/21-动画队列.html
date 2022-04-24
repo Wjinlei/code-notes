@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画队列</title>
+    <style type="text/css">
+        div{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            left: 10px;
+            top: 40px;
+        }
+
+        a{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input id="bt1" type="button" value="先点我,再点其他的" />
+    <a href="#stop" id="stop">stop()</a>
+    <a href="#dequeue" id="dequeue">dequeue()</a>
+    <a href="#finish" id="finish">finish()</a>
+    <a href="#delay" id="delay">先点我,马上再点按钮delay()</a>
+    <div></div>
+</body>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+    $('#bt1').click(function () {
+        $('div').animate({
+            'top': '400px'
+        },2000).animate({
+            'left': '800px'
+        },2000).animate({
+            'top': '40px'
+        },2000).animate({
+            'left': '10px'
+        },2000);
+    });
+
+    // stop(clearQueue, jumpToEnd)
+    $('#stop').click(function () {
+        // $('div').stop(); // 默认是 false,false,表示不清空动画队列,不立即跳转到当前动画的结束,立即结束当前动画,进行下一个动画
+        // $('div').stop(false,true); // 表示不清空动画队列,立即跳转到当前动画的结束,立即跳转到当前动画的结束,再进行下一个动画
+        // $('div').stop(true,false); // 表示清空动画队列,不立即跳转到当前动画的结束,动画结束
+        $('div').stop(true,true); // 表示清空动画队列,立即跳转到当前动画的结束,立即跳转到当前动画的结束,动画结束
+        // 总结:
+        // clearQueue 如果为true,则会结束整个动画,则不会结束整个动画,会执行下一个动画,直到动画结束
+        // jumpToEnd 如果为true,则会立即跳转到当前动画的结束位置,否则则不会
+    });
+
+    // dequeue()
+    $('#dequeue').click(function () {
+        $('div').dequeue(); // 当.dequeue()被调用的时候,列队中的下一个函数将从这个列队中被移除,然后再执行
+    });
+
+    // finish()
+    $('#finish').click(function () {
+        $('div').finish(); // 停止当前正在运行的动画,删除所有排队的动画,直接完成匹配元素的所有动画(直接跳到匹配元素的整个动画的最后)
+    });
+
+    // delay()
+    $('#delay').click(function () {
+        $('div').delay(4000); // 一个整数，指示的毫秒数，用于设定下个队列推迟执行的时间。(注意: 是下一个队列,不是下一个动画)
+    });
+
+
+    // jQuery.fx.interval // 设置运动的时间(毫秒为单位),不推荐
+    // jQuery.fx.interval = 3000;
+</script>
+</html>

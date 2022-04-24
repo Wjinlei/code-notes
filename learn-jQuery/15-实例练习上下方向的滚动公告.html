@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实例练习:上下方向的滚动公告</title>
+    <style type="text/css">
+        ul{
+            list-style-type: none;
+        }
+        li{
+            height: 30px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>我是第1条公告</li>
+    <li>我是第2条公告</li>
+    <li>我是第3条公告</li>
+    <li>我是第4条公告</li>
+    <li>我是第5条公告</li>
+    <li>我是第6条公告</li>
+    <li>我是第7条公告</li>
+    <li>我是第8条公告</li>
+    <li>我是第9条公告</li>
+    <li>我是第10条公告</li>
+</ul>
+</body>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+    setInterval(function () {
+        var newLi = $('ul').children().first().clone();
+        $('ul').append(newLi);
+        $('ul').children().first().remove();
+    },1000);
+
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单选择框实例</title>
+</head>
+<body>
+    <div id="div1">
+        <input type="checkbox" checked="checked"/>吃
+        <input type="checkbox" />喝
+        <input type="checkbox" />玩
+        <input type="checkbox" />乐
+    </div>
+
+    <div id="div2">
+        <input id="checkAll" type="button" value="全选" />
+        <input id="checkNone" type="button" value="全不选" />
+        <input id="checkReverse" type="button" value="反选" />
+    </div>
+</body>
+<!--<script src="./js/jquery-2.2.4.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    // 全选
+    $('#checkAll').click(function () {
+        $('#div1>:checkbox').attr('checked', true); // W3C中checked是布尔值,这是最标准的
+    });
+
+    // 全不选
+    $('#checkNone').click(function () {
+        $('#div1>:checkbox').attr('checked', false);
+    });
+
+    /*
+    * 问题: 当点击全选,再点全不选,再点全选就会失效,这是一个jquery的bug,只能使用低版本的jquery,或者最新版本3.3.1的就没问题
+    * */
+
+
+    // 反选
+    $('#checkReverse').click(function () {
+        $('#div1>:checkbox').each(function () {
+            $(this).attr('checked', !$(this).attr('checked'));
+        });
+    });
+
+</script>
+</html>

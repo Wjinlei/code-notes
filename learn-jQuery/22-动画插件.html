@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画插件</title>
+    <style type="text/css">
+        div{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            top: 40px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input id="bt1" type="button" value="点击测试效果" />
+    <div></div>
+</body>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script src="./js/jquery.easing.1.3.js"></script>
+<script>
+    $('#bt1').click(function () {
+        // animate这个函数还有第三个参数easing,这里我们可以传插件的对应效果函数
+        $('div').animate({'left': '800px'},2000,'easeOutBounce'); // easeOutBounce 是 easing 插件中的一个函数
+
+        // 凡是有 easing 参数的函数,都可以使用这个插件,具体请查询jQuery手册
+    });
+</script>
+</html>

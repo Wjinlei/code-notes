@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模态对话框</title>
+    <style type="text/css">
+        #mask{
+            opacity: 0.2; /* 遮罩层应该有透明度 */
+            background-color: black;
+            position: absolute;
+            left:0;
+            top: 0;
+            width: 100%; /* 遮罩层应该占满屏幕 */
+            height: 100%; /* 遮罩层应该占满屏幕 */
+            display: none;
+            z-index: 2; /*z-index 确保遮罩层在最下层*/
+        }
+
+        #popDiv{
+            border: 1px solid red;
+            background-color: white;
+            width: 400px;
+            position: absolute;
+            left: 50%;
+            margin-left: -250px;
+            top: 200px;
+            display: none;
+            z-index: 4; /*z-index 确保操作对话框在最上层*/
+        }
+
+        #popDiv p{
+            border-bottom: 1px solid red;
+            width: 380px;
+        }
+
+    </style>
+</head>
+<body>
+    <a href="#" id="open">打开模态对话框</a>
+
+    <div id="mask"></div>
+
+    <div id="popDiv">
+        <p>背景有个遮罩层,可以实现不允许点击的效果</p>
+        <p>背景有个遮罩层,可以实现不允许点击的效果</p>
+        <p>背景有个遮罩层,可以实现不允许点击的效果</p>
+        <p>背景有个遮罩层,可以实现不允许点击的效果</p>
+        <p>背景有个遮罩层,可以实现不允许点击的效果</p>
+        <p>背景有个遮罩层,可以实现不允许点击的效果</p>
+        <a href="#" id="close">关闭</a>
+    </div>
+</body>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+    // 当点击open的时候,显示遮罩层
+    $('#open').click(function () {
+        $('#mask').show();
+        $('#popDiv').show();
+    });
+
+    // 当点击close的时候,隐藏遮罩层
+    $('#close').click(function () {
+        $('#mask').hide();
+        $('#popDiv').hide();
+    });
+
+    // 总结:
+    // 遮罩层应该处于最下层
+    // 遮罩层应该占满屏幕
+    // 遮罩层应该有透明度
+</script>
+</html>

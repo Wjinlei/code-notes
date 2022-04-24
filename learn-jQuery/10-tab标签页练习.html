@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab标签页练习</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        body{
+            margin: 50px;
+        }
+
+        ul{
+            list-style-type: none;
+        }
+
+        #ul{
+            height: 30px;
+            margin-bottom: 10px;
+        }
+
+        #ul li{
+            height: 30px;
+            line-height: 30px;
+            padding: 0 15px;
+            border: 1px solid #abcdef;
+            float: left;
+            margin-right: 3px;
+            cursor: pointer;
+        }
+
+        #ul li.current{
+            background-color: #abcdef;
+        }
+
+        #content div{
+            width: 300px;
+            height: 200px;
+            border: 1px solid #abcdef;
+            display: none;
+        }
+
+        #content div.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <ul id="ul">
+        <li class="current">php</li>
+        <li>ruby</li>
+        <li>python</li>
+    </ul>
+    <div id="content">
+        <div class="show">php.......介绍</div>
+        <div>ruby......介绍</div>
+        <div>python....介绍</div>
+    </div>
+</body>
+
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+
+    // 原生js的方法
+    // var lis = document.getElementsByTagName('li');
+    // var div = document.getElementById('content');
+    // var divs = div.getElementsByTagName('div');
+    //
+    // for(var i=0; i<lis.length; i++){
+    //     lis[i].index = i;
+    //     lis[i].onclick = function () {
+    //         // 先把所有的显示都去掉
+    //         for(var j=0;j<lis.length; j++){
+    //            lis[j].className = '';
+    //            divs[j].style.display = 'none';
+    //         }
+    //         // 然后在设置当前点击的对象的class属性和display属性
+    //         this.className = 'current';
+    //         divs[this.index].style.display = 'block';
+    //     }
+    // }
+
+    // jQuery的方法
+    $('#ul>li').click(function () {
+        // 点击时,当前的对象加一个class名为current,其他的兄弟对象移除名为current的class属性
+        // $(this).addClass('current').siblings().removeClass('current');
+
+        // $(this).index() 表示当前对象的索引
+        // show() 表示显示,相当于 display: block
+        // hide() 表示隐藏,相当于 display: none
+        // 当点击时,选择div索引等于当前li索引的div,让它显示出来,其他兄弟元素则隐藏
+        // $('#content>div').eq($(this).index()).show().siblings().hide();
+
+
+        // 一行解决
+        $(this).addClass('current').siblings().removeClass('current').parent().next().children().eq($(this).index()).show().siblings().hide();
+    })
+
+
+    // 总结:
+    // 学到的新方法:
+    // addClass()
+    // removeClass()
+    // $(this).index
+    // show()
+    // hide()
+</script>
+</html>

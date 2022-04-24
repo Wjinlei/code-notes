@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery中的动画01</title>
+    <style type="text/css">
+        p{
+            height: 200px;
+            width: 300px;
+            background-color: red;
+            display: none;
+        }
+
+        #toggle{
+            color: red;
+        }
+
+        #fadeToggle{
+            color: red;
+        }
+
+        #slideToggle{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <a href="#show" id="show">show()</a>
+    <a href="#hide" id="hide">hide()</a>
+    <a href="#toggle" id="toggle">toggle()</a>
+    <a href="#fadeIn" id="fadeIn">fadeIn()</a>
+    <a href="#fadeOut" id="fadeOut">fadeOut()</a>
+    <a href="#fadeTo" id="fadeTo">fadeTo()</a>
+    <a href="#fadeToggle" id="fadeToggle">fadeToggle()</a>
+    <a href="#slideDown" id="slideDown">slideDown()</a>
+    <a href="#slideUp" id="slideUp">slideUp()</a>
+    <a href="#slideToggle" id="slideToggle">slideToggle()</a>
+    <p id="p1">我是一个p1标签</p>
+    <p id="p2">我是一个p2标签</p>
+    <p id="p3">我是一个p3标签</p>
+
+</body>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+    // 基础动画
+        // show() // 显示
+        $('#show').bind('click',function () {
+            $('#p1').show(600); // 600 代表毫秒数,表示隐藏的时间,还可以传字符串 'fast' 'slow' 'normal'
+        });
+
+        // hide() // 隐藏
+        $('#hide').bind('click',function () {
+            $('#p1').hide(600); // 600 代表毫秒数,表示隐藏的时间,还可以传字符串 'fast' 'slow' 'normal'
+        });
+
+        // toggle() // 切换show获或者hide()
+        $('#toggle').bind('click',function () {
+            $('#p1').toggle(600); // 600 代表毫秒数,表示隐藏的时间,还可以传字符串 'fast' 'slow' 'normal'
+        });
+
+    // 渐变动画
+        // fadeIn();
+        $('#fadeIn').bind('click',function () {
+            $('#p2').fadeIn(1000,function () {
+                alert('回调方法,当动画执行完毕后,才会执行的方法,如果没有需要可以不传');
+            }); // 1000,代表毫秒数,还可以传字符串 'fast' 'slow' 'normal',opacity从0变成1
+        });
+
+        // fadeOut();
+        $('#fadeOut').bind('click',function () {
+            $('#p2').fadeOut(1000,function () {
+                alert('回调方法,当动画执行完毕后,才会执行的方法,如果没有需要可以不传');
+            }); // 1000,代表毫秒数,还可以传字符串 'fast' 'slow' 'normal',opacity从1变成0
+        });
+
+        // fadeTo();
+        $('#fadeTo').bind('click',function () {
+            // 1000,代表毫秒数,还可以传字符串 'fast' 'slow' 'normal'
+            // 0.5 表示要opacity成多少? opacity从当前变成0.5
+            $('#p2').fadeTo(1000, 0.5,function () {
+                alert('回调方法,当动画执行完毕后,才会执行的方法,如果没有需要可以不传');
+            });
+        });
+
+        // fadeToggle();
+        $('#fadeToggle').bind('click',function () {
+            $('#p2').fadeToggle(600);
+        });
+
+    // 滑动动画
+        // slideDown(); // 从上到下滑动显示
+        $('#slideDown').bind('click',function () {
+            $('#p3').slideDown(600,function () {
+                alert('回调方法,当动画执行完毕后,才会执行的方法,如果没有需要可以不传');
+            }); // 600 代表毫秒数,表示隐藏的时间,还可以传字符串 'fast' 'slow' 'normal'
+        });
+
+        // slideUp(); // 从下到上隐藏
+        $('#slideUp').bind('click',function () {
+            $('#p3').slideUp(600,function () {
+                alert('回调方法,当动画执行完毕后,才会执行的方法,如果没有需要可以不传');
+            }); // 600 代表毫秒数,表示隐藏的时间,还可以传字符串 'fast' 'slow' 'normal'
+        });
+
+        // slideToggle
+        $('#slideToggle').bind('click',function () {
+            $('#p3').slideToggle(600);
+        });
+</script>
+</html>

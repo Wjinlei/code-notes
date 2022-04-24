@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery过滤选择器和表单选择器(上)</title>
+    <style>
+        #go{
+            width: 100px;
+            height: 100px;
+            background-color: #FF832C;
+            position: absolute;
+        }
+
+        p{
+            height: 30px;
+            line-height: 30px;
+        }
+
+        #hide{
+            display: none;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <p>我是第1个p标签</p>
+    <p>我是第2个p标签</p>
+    <p id="p3">我是第3个p标签</p>
+    <p>我是第4个p标签</p>
+    <p>我是第<span>5</span>个p标签</p>
+    <p>我是第6个p标签</p>
+    <p>我是第7个p标签</p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <h6>标题6</h6>
+    <h5>标题5</h5>
+    <h4>标题4</h4>
+    <h3>标题3</h3>
+    <h2>标题2</h2>
+    <h1>标题1</h1>
+    <div id="hide">我是一个隐藏的div标签</div>
+    <div id="go"></div>
+
+</body>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+    $('#go').animate({'left': 1000},10000); // 先让它动起来
+    $(function () {
+        // 基本过滤选择器
+        // $('p:first').css('background-color', 'red'); /* 选择第1个p标签 first */
+        // $('p:last').css('background-color', 'gray'); /* 选择最后1个p标签 last */
+        // $('p:not(\'#p3\')').css('background-color', 'red'); /* 选择除了某个标签 not() */
+        // $('p:even').css('background-color', 'red'); /* 偶数选择器 even 注意,它是从0开始的 */
+        // $('p:odd').css('background-color', 'red'); /* 奇数选择器 odd 注意,它是从0开始的 */
+        // $('p:eq(\'3\')').css('background-color', 'red'); /* 选择指定索引的p元素 eq() */
+        // $('p:gt(\'2\')').css('background-color', 'red'); /* 选择下标大于2的p元素 gt() */
+        // $('p:lt(\'2\')').css('background-color', 'red'); /* 选择下标小于2的p元素 lt() */
+        // $(':header').css('background-color', 'gray'); /* 选择h1到h6标签 header */
+        // $(':animated').css('background-color', 'blue'); /* 选择运动的元素 animated*/
+
+        // 内容过滤选择器
+        // $('p:contains("7")').css('color', 'red'); /* 选择包含指定文本的元素 contains() */
+        // $('p:has("span")').css('color', 'red'); /* 选择包含span标签的元素 has()*/
+        // $('p:empty').css('background-color', 'red'); /* 选择不包含子元素,或空文本的元素 empty*/
+        // $('p:parent').css('background-color', 'red'); /* 选择含有子元素,或者有文本内容的元素 parent */
+
+        // 可见性选择器
+        // $('div:hidden').css({'display': 'block', 'background-color': 'red'}); /* 选择不可见的元素 hidden*/
+        $('div:visible').css({'display': 'block', 'background-color': 'red'}); /* 选择可见的元素 visible*/
+    });
+</script>
+</html>

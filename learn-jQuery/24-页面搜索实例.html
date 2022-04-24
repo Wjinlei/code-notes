@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面搜索实例</title>
+    <style type="text/css">
+        table{
+            width: 700px;
+            border: 1px solid red;
+            border-collapse: collapse;
+        }
+
+        tr{
+            height: 30px;
+        }
+
+        th,td{
+            border: 1px solid red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr id="thead">
+                <th>姓名</th>
+                <th>性别</th>
+                <th>电话</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>张三</td>
+                <td>男</td>
+                <td>128920239</td>
+            </tr>
+            <tr>
+                <td>李四</td>
+                <td>男</td>
+                <td>132920239</td>
+            </tr>
+            <tr>
+                <td>王五</td>
+                <td>男</td>
+                <td>166220239</td>
+            </tr>
+            <tr>
+                <td>赵六</td>
+                <td>女</td>
+                <td>192920239</td>
+            </tr>
+            <tr>
+                <td>中国移动</td>
+                <td>女</td>
+                <td>10086</td>
+            </tr>
+            <tr>
+                <td>中国电信</td>
+                <td>女</td>
+                <td>10000</td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="text" />
+    <input type="button" value="搜索" />
+</body>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+    // 本地搜索实例
+    $('input[type=button]').click(function () {
+        // 搜索结果默认一行tr都不显示(不包括id为thead的表头行),通过过滤条件,只显示对应的tr
+        $('table tr:not("#thead")').hide().filter(':contains("'+ $('input[type=text]').val() +'")').show();
+    });
+</script>
+</html>

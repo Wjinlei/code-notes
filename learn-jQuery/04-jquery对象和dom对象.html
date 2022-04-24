@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery对象和dom对象</title>
+</head>
+<body>
+
+    <p id="p1">111111111</p>
+    <p id="p2">222222222</p>
+    <input type="text" id="txt" value="测试文本" />
+    <input type="text" id="txt2" value="测试文本2" />
+</body>
+<!--// 引入库的顺序不同也会影响$的效果-->
+<script src="./js/prototypejs-1.7.3.js"></script>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+    // DOM对象
+    var p1 = document.getElementById('p1');
+    alert(p1.innerHTML);
+    // alert(p1.html()); // p1.html is not a function, DOM对象也不能使用任何jquery中的方法
+
+
+    // Jquery对象
+    var p2 = $('#p2');
+    // alert(p2.innerHTML); // jquery对象不能使用某些dom对象的方法,有的则可以
+    alert(p2.html());
+    alert(p2.length); // 可以使用,因其在jquery中被改写了
+    alert(p2.toString()); // 可以使用,因其在jquery中被改写了
+
+
+    // Jquery对象转换成DOM对象
+    var input = $('#txt');
+    alert(input.val()); // val()方法可以打印value
+    alert(input[0].value); // 通过索引转换成DOM对象
+    alert(input.get(0).value); // 通过get()方法也可以转换成DOM对象
+
+
+    // DOM对象转换成Jquery对象
+    var input2 = document.getElementById('txt2');
+    alert(input2.value);
+    alert($(input2).val()); // DOM转换成Jquery,只需要把DOM对象用 $() 包起来即可
+
+
+    // Jquery与其他js库共存
+    jQuery.noConflict(); // 释放 $ 权限
+    alert($F('txt'));
+    alert(jQuery('#txt').val()); // 通过 jQuery 代替 $
+</script>
+</html>

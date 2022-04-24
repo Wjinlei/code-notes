@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仿微博发布框</title>
+</head>
+<body>
+    <textarea cols="30" rows="10"></textarea>
+    <span>你还可以输入<strong style="color: red;">140</strong>个字</span>
+</body>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+    $('textarea').keyup(function () {
+        // 每次弹起按键的时候,用140减去当前textarea的长度,并设置为strong的文本
+        $('strong').text(140 - $(this).val().length);
+        // 如果strong的文本长度<0,则把它设置为0,并设置textarea的值为,截取,从0到140个字符.
+        if(parseInt($('strong').text()) < 0){
+            $('strong').text('0');
+            $(this).val($(this).val().substring(0, 140));
+        }
+    });
+</script>
+</html>

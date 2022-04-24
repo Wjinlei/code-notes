@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery中的DOM操作</title>
+    <style type="text/css">
+        .reda{
+            color: red;
+        }
+
+        #p1{
+            height:30px;
+            width: 500px;
+            padding: 5px;
+            border: 5px solid red;
+            margin: 5px;
+        }
+
+        #btop{
+            position: fixed;
+            top: 250px;
+        }
+
+        #bleft{
+            position: fixed;
+            top: 250px;
+            left: 200px;
+        }
+    </style>
+</head>
+<body style="height: 8000px; width: 8000px;">
+    <button id="btop">弹出滚动条距离顶部的距离</button>
+    <button id="bleft">弹出滚动条距离右边的距离</button>
+    <a href="https://www.baidu.com/">百度一下</a>
+    <a href="https://www.baidu.com/">百度一下</a>
+    <a href="https://www.baidu.com/">百度一下</a>
+
+    <p id="p1">这是一个带id的p标签</p>
+    <p id="p2">这是一个带id的p标签</p>
+    <p id="p3">这是一个带<strong style="background-color: red">id</strong>的p标签</p>
+    <div id="outer" style="position: absolute; left:10px; top:180px;">
+        outer
+        <p id="divp1">我是outer中的第1个p标签</p>
+    </div>
+
+</body>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+    // 1. 查找节点(详见: 07-DOM筛选、08-DOM遍历查找)
+
+    // 2. 创建节点
+        // $('body').append($('<div id="div1">我是一个div</div>')); /* 通过$()来创建节点,然后用append添加到body中 */
+
+    // 3. 插入节点
+    // 内部插入, 插入到元素的内部
+        // $('#div1').append($('<p>我是在元素内部最后面插入的p标签</p>')); /* 向匹配的元素的内部最后面插入新元素 */
+        // $('#div1').prepend($('<p>我是在元素内部最前面插入的p标签</p>')); /* 向匹配的元素的内部最前面插入新元素 */
+    // 外部插入, 插入到元素的外部
+        // $('#div1').after($('<p>我是在元素外部最后面插入的p标签</p>')); /* 向匹配的元素的外部最后面插入新元素 */
+        // $('#div1').before($('<p>我是在元素外部最前面插入的p标签</p>')); /* 向匹配的元素的外部最前面插入新元素 */
+
+    // 4. 包裹节点
+        // $('a').wrap('<div></div>'); /* 将所有匹配的元素单独包裹*/
+        // $('a').wrapAll('<div></div>'); /* 将所有匹配的元素全部包裹*/
+        // $('#div1').wrapInner('<span></span>'); /* 将匹配的元素的子元素全部包裹起来 */
+    // 5. 删除节点
+        // $('#p1').remove(); /* 删除节点 */
+        // $('#p2').empty(); /* 清除标签内的内容(包括子标签和文本内容) */
+        // $('a').unwrap(); /* 将匹配标签的父元素清除, 清除包裹 */
+
+    // 6. 复制节点
+        // $('body').append($('#div1').clone(true)); /* true 表示,连标签所带的事件也一起复制 */
+
+    // 7. 替换节点
+        // $('p').replaceWith('<a href="https://www.baidu.com/">百度一下</a>'); /* 将所有匹配到的元素替换成指定的HTML或DOM元素 */
+
+    // 8. 遍历节点(详见: 07-DOM筛选、08-DOM遍历查找)
+
+    // 9. 操作DOM节点属性
+        // $('a').attr('target', '_blank'); /* 利用 attr 方法, 就可以操作DOM节点的属性 */
+        // $('a').removeAttr('target', '_blank'); /* 删除节点属性 */
+
+    // 10. 操作样式
+        // $('a').addClass('a'); /* 添加类名 */
+        // $('a').removeClass('a'); /* 删除类名 */
+        // $('a').toggleClass('reda'); /* 切换类名 */
+        // console.log($('a').hasClass('reda')); /*判断是否有指定类名 */
+        // $('a').css('color', 'blue'); /* 设置css属性 */
+        // console.log($('#p1').height()); /* 获取高度 */
+        // console.log($('#p1').innerHeight()); /* 获取padding值,(默认包括上padding和下padding),它不包括border的值*/
+        // console.log($('#p1').outerHeight(false)); /* 如果为true,会把margin值计算进去,默认为false,表示不会计算margin值*/
+        // console.log($('#p1').width()); /* 获取宽度 */
+        // console.log($('#p1').innerWidth()); /* 获取padding值,(默认包括上padding和下padding),它不包括border的值*/
+        // console.log($('#p1').outerWidth(false)); /* 如果为true,会把margin值计算进去,默认为false,表示不会计算margin值*/
+        // console.log($('#p1').offset()); /* 返回一个对象,它包含这个元素在DOM中(文档流)的位置 */
+        // $('#divp1').offsetParent().css('background-color', 'red'); /* 匹配第一个position设为relative或者absolute的父元素 */
+        // console.log($('#divp1').position()); /* position和offset不同的是,position是相对于父元素的坐标,而offset是相对于文档流的坐标 */
+
+        $('#btop').click(function () {
+            alert($(window).scrollTop());  /* 纵向滚动条的位置 */
+        });
+
+        $('#bleft').click(function () {
+            alert($(window).scrollLeft());  /* 横向滚动条的位置 */
+        });
+    // 11. 设置和获取节点内的html和文本
+        // alert($('#p1').text()); /* 获取匹配标签中的文本节点 */
+        // $('#p1').text('测试测试测试'); /* 如果加参数则表示修改文本节点的内容 */
+
+        // alert($('#p3').html()); /* text只是获取文本, html()会获得其中的标签 */
+        // $('#p3').html('测试<span style="background-color: #FF832C">测试</span>测试'); /* 如果加参数则表示修改文本节点的内容 */
+</script>
+</html>

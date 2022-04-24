@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件的绑定与移除</title>
+    <style type="text/css">
+        table{
+            border: 1px solid red;
+            border-collapse: collapse;
+        }
+
+        th{
+            border: 1px solid red;
+        }
+
+        td{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <p>这是一个p标签</p>
+    <table>
+        <tbody>
+            <tr id="tr1">
+                <td>单元格</td>
+                <td>单元格</td>
+                <td>单元格</td>
+                <td>单元格</td>
+            </tr>
+            <tr id="tr2">
+                <td>单元格</td>
+                <td>单元格</td>
+                <td>单元格</td>
+                <td>单元格</td>
+            </tr>
+            <tr id="tr3">
+                <td>单元格</td>
+                <td>单元格</td>
+                <td>单元格</td>
+                <td>单元格</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+    // bind(eventType,function,bool); // 绑定事件
+        $('p').bind('click', function () {
+            alert($(this).text());
+        }); // 第三个参数如果为false,则会阻止事件冒泡,默认值是true
+
+    // unbind(); // 移除事件
+        // $('p').unbind('click');
+
+    // on(eventType,selector,function); // 绑定事件
+        // $('#tr1').on('click','td',function () {
+        //     console.log($(this).text());
+        // });
+        // on()方法多用于委派事件,只在一个元素上绑定一个事件处理程序,下面的代码是绑定在tbody元素上,
+        // 并且事件只会向上冒泡一层(从被点击的td 到 tr1)
+        // 当遇到多个对象需要添加事件的时候, 就推荐用 on(); 方法
+
+    // off(); // 移除事件
+        // $('#tr1').off('click');
+
+    // one(eventType,function); // 执行一次事件,然后销毁该事件
+        // $('p').one('click', function () {
+        //     alert($(this).text());
+        // });
+
+
+    // delegate(); // 虽然未被废弃,但官方推荐使用 on() 代替
+    // undelegate(); // 用 off() 代替
+
+
+    /*
+    关于jQuery的事件命名空间
+    $('p').bind('click.showtext', function () {
+        alert($(this).text());
+    });
+    在绑定一个事件的时候,可以给事件名后面加一个.标记 打一个标记
+    然后在解绑定的时候就可以指定解除哪一个事件
+    $('p').unbind('click.showtext'); // 这样就可以只解除名为 click.showtext 的事件,这种做法叫做jQuery的事件命名空间
+    */
+</script>
+</html>

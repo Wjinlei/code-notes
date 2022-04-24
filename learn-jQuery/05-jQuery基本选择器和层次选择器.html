@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery基本选择器和层次选择器</title>
+</head>
+<body>
+    <hr/>
+    <div>
+        <a href="#">div>a</a>
+        <p><a href="#">div>p>a</a></p>
+    </div>
+    <hr/>
+    <h1>标题1</h1>
+    <hr/>
+    <p id="p1">这是一段段落(id)</p>
+    <hr/>
+    <p class="p">这是一段段落(类名)</p>
+    <hr/>
+    <h2>标题2</h2>
+    <h3>标题3</h3>
+    <h4>标题4</h4>
+    <p>这是一段段落</p>
+    <p>这是一段段落</p>
+    <p>这是一段段落</p>
+    <p>这是一段段落</p>
+    <p>这是一段段落</p>
+</body>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+    // jQuery派生选择器
+    $(function () {
+        $('div>a').css('color', 'red');
+    });
+
+    /*直接写标签名,就是标签选择器,它会选择所有p标签*/
+    $(function () {
+        $('h1').css('color','blue');
+    });
+
+    /*#号id名,就是id选择器,它会选择id为p2的标签*/
+    $(function () {
+        $('#p1').css('color', 'green');
+    });
+
+    /*.号class名,就是类名选择器,它会选择class名为p的标签*/
+    $(function () {
+        $('.p').css('color', 'yellow');
+    });
+
+    /* "*"号选择所有标签(不推荐使用,因为它会遍历所有的标签,效率很低),一般实在要使用,那么使用 body>* */
+    $(function () {
+        $('*').css('margin-top', '50px');
+    });
+
+    /* 多重选择器 , 号 */
+    $(function () {
+        $('h2, h3, h4').css('color', '#602394')
+    });
+
+    /* 兄弟选择器 + 或者 next() */
+    $(function () {
+        $('h2+h3').css('color', '#912239');
+    });
+    $(function () {
+        $('h3').next().css('color', '#787029');
+    });
+
+    /* 后向全选 ~  nextAll() */
+    $(function () {
+        /* 选择h4之后的所有p标签 */
+        // $('h4~p').css('color', 'red');
+        $('h4').nextAll().css('color', 'red');
+    })
+</script>
+</html>

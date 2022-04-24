@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery自定义动画</title>
+    <style type="text/css">
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: #FF832C;
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+    <a href="#animate" id="animate">animate()</a>
+    <div></div>
+</body>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+    $('#animate').bind('click',function () {
+        // 根据一组 CSS 属性,执行自定义动画。
+        $('div').animate({
+            'left': '800px',
+            'top': '500px',
+            'opacity': '0.3'
+        },3000,function () {
+            $(this).css('background-color', 'red'); // function就是回调函数,和前面的一样
+        });
+        // 3000表示动画将运行多久。(默认值: "normal",三种预定速度的字符串("slow", "normal", 或 "fast")
+        // 或表示动画时长的毫秒数值(如：1000) )
+    });
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>window.onload和$(document).ready的区别</title>
+</head>
+<body>
+
+
+
+</body>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+    // window.onload 必须等所有资源加载完毕后才能执行(包括图片,flash,音频,视频)等等
+    // 只能写1个
+    // 简写: 无
+    window.onload = function () {
+        alert(1);
+    };
+
+    // $(document).ready() 只需要等dom树加载完毕就可以执行
+    // $(document).ready() 可以写多个
+    // 简写:
+    // $(function(){
+    //     alert(1);
+    // });
+    $(document).ready(function () {
+        alert(1);
+    });
+
+    $(function () {
+        alert(1);
+    })
+</script>
+</html>

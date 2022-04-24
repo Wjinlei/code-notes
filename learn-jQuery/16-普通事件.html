@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>普通事件</title>
+</head>
+<body style="height: 8000px;">
+    <p>鼠标事件测试</p>
+    <a href="#">点击我</a>
+</body>
+<script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
+<script>
+    // 文档加载事件
+        // $(document).ready();
+        // $.holdReady(true); /* 暂停或恢复ready事件 */
+
+    // 鼠标事件
+        // click(); // 左键单击
+        // dblclick(); // 左键双击
+        // focusin(); // 获得焦点
+        // focusout(); // 失去焦点
+        // mousedown(); // 鼠标按下
+        // mouseup(); // 鼠标抬起
+        // mousemove(); // 鼠标移动,鼠标移动时触发
+        // mouseover(); // 鼠标进入,鼠标经过时触发
+        // mouseout(); // 鼠标离开,鼠标离开时触发
+        // mouseenter(); // 鼠标进入,它和mouseover一样,只不过它可以阻止冒泡模型
+        // mouseleave(); // 鼠标离开,它和mouseout一样,只不过它可以阻止冒泡模型
+
+            // $('p').mouseover(function () {
+            //     $(this).css('background-color', 'red');
+            // });
+            //
+            // $(document).mouseover(function () {
+            //     $('p').css('background-color', 'blue');
+            // }); // 因为冒泡模型的缘故,p标签的事件冒泡到了document上,被document触发,所以p标签的事件就不会触发了
+
+
+            // $('p').mouseenter(function () {
+            //     $(this).css('background-color', 'red');
+            // });
+            //
+            // $(document).mouseleave(function () {
+            //     $('p').css('background-color', 'blue');
+            // });
+
+        // hover(); // 同时绑定mouseenter和mouseleave事件,它也可以阻止冒泡模型
+            $('p').hover(function () {
+                $(this).css('background-color', 'red'); // 第一个function为mouseenter
+            },function () {
+                $(this).css('background-color', 'blue'); // 第二个function为mouseleave
+            });
+
+
+    // 键盘事件
+        // keydown(); // 键盘按下事件
+        // keyup(); // 键盘弹起事件
+        // keypress();
+            // 类似keydown,区别是: 当浏览器捕获一个元素上键盘输入时，keypress就会发送个元素。这是类似keydown事件，
+            // 除了当按键被一直按下（即连续插入字符的场合）时的处理。如果用户按下并按住这个键（不松开释放）的时候，
+            // keydown事件只触发一次，但是keypress会在每个字符插入的时候都会触发事件。
+            // 此外，组合键（如Shift）会触发keydown事件，但不会触发keypress事件。
+
+    // 浏览器事件
+        // resize(); // 浏览器窗口改变大小事件
+        $(window).resize(function () {
+            alert('浏览器窗口已改变');
+        });
+        // scroll(); 浏览器滚动条移动时的事件
+        $(window).scroll(function () {
+            alert('滚动条已经移动');
+        });
+
+    // 模拟事件发生
+        $('a').click(function () {
+            alert('a标签被点击了');
+        });
+        $(document).click(function () {
+            alert('document被点击了')
+        });
+
+        // $('a').trigger('click'); // 模拟click事件
+        $('a').triggerHandler('click'); // 模拟click事件,它可以阻止冒泡
+</script>
+</html>

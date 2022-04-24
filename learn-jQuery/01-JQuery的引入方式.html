@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery的引入方式</title>
+</head>
+<body>
+
+<!--Jquery分为生产环境版和开发版本:-->
+<!--生产环境版本为已经压缩了的版本,压缩后的文件更小,但代码我们看不懂-->
+<!--开发版本为没有压缩的版本,文件更大,但代码我们能够看的懂,并且有注释-->
+<!--一般带有 .min 的就是生产环境版本,没有 .min 的就是开发版本-->
+</body>
+
+<!--引入本地jquery-->
+<script src="./js/jquery-2.2.4.min.js"></script>
+
+<!--引入CDN的Jquery-->
+<script src="./js/http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+
+<!--优先引入CDN上的Jquery,如果失效再引入本地的Jquery-->
+<script src="./js/http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="jquery-2.2.4.min.js"><\/script>')</script>
+
+
+</html>

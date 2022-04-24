@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery选择器的优化</title>
+</head>
+<body>
+    <p id="p1">我是一个p标签</p>
+
+    <p class="p">我是一个p标签</p>
+
+    <div class="div1">
+        <p>我是div中的第1个p标签</p>
+        <p>我是div中的第2个p标签</p>
+        <p>我是div中的第3个p标签</p>
+        <p>我是div中的第4个p标签</p>
+    </div>
+
+    <div class="div2">
+        <p class="p">我是div2中的第1个p标签</p>
+        <p class="p">我是div2中的第2个p标签</p>
+        <p>我是div2中的第3个p标签</p>
+        <p>我是div2中的第4个p标签</p>
+    </div>
+
+</body>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+    // 1. 优先使用id选择器,它的速度是最快的
+    $('#p1').css('color', 'red');
+
+    // 2. 在使用class选择器前,添加标签名
+    $('p.p').css('color', 'red');
+
+    // 3. 尽量采用find,而不是用children
+    $('div.div1').find('p').css('color', 'red');
+
+    // 4. 尽量使用链式操作
+
+    // 5. 对于层级选择,应遵从从左至右的方法来选择,左边用 2 的方式, 右边直接写 类选择器即可
+    $('div.div2 .p').css('color', 'red');
+</script>
+</html>

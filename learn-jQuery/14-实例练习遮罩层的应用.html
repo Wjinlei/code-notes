@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实例练习:遮罩层的应用</title>
+    <style type="text/css">
+        table{
+            border-collapse: collapse;
+            width: 600px;
+            text-align: center;
+        }
+
+        table thead tr th{
+            border: 1px solid #abcdef;
+        }
+
+        table td{
+            border: 1px solid #abcdef;
+            height: 30px;
+        }
+
+        a{
+            margin-left: 5px;
+        }
+
+        input{
+            width: 270px;
+            height: 25px;
+            margin-left: 10px;
+        }
+
+        #popDiv{
+            background-color: white;
+            border: 1px solid red;
+            width: 400px;
+            position: absolute;
+            left: 390px;
+            top: 50px;
+            display: none;
+            z-index: 4;
+        }
+
+        #popDiv p{
+            border-bottom: 1px solid red;
+            width: 350px;
+            margin-left: 20px;
+        }
+
+        /*遮罩层应该被全局共享,所以不需要动态创建,就写死就可以了*/
+        #mask{
+            opacity: 0.2;
+            background-color: black;
+            position: absolute;
+            left:0;
+            top:0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>职位</th>
+            <th>工资</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--遮罩层-->
+        <div id="mask"></div>
+        <tr>
+            <td>张三</td>
+            <td>23</td>
+            <td>前端工程师</td>
+            <td>6000</td>
+            <td><a href="#" class="modify">修改</a><a href="#" class="del">删除</a></td>
+        </tr>
+        <tr>
+            <td>李四</td>
+            <td>27</td>
+            <td>Python程序员</td>
+            <td>10000</td>
+            <td><a href="#" class="modify">修改</a><a href="#" class="del">删除</a></td>
+        </tr>
+        <tr>
+            <td>王五</td>
+            <td>32</td>
+            <td>资深C/C++程序员</td>
+            <td>20000</td>
+            <td><a href="#" class="modify">修改</a><a href="#" class="del">删除</a></td>
+        </tr>
+    </tbody>
+</table>
+    <!--弹出操作框-->
+    <div id="popDiv">
+
+        <p><strong>姓名:</strong><input type="text" /></p>
+        <p><strong>年龄:</strong><input type="text" /></p>
+        <p><strong>职位:</strong><input type="text" /></p>
+        <p><strong>工资:</strong><input type="text" /></p>
+        <a href="#" id="close" style="margin-left: 300px;">取消</a>
+        <a href="#" id="submit" style="margin-left: 10px;">确定</a>
+    </div>
+</body>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+    // 修改
+    $('.modify').click(function () {
+        var obj;
+        var trvalues = [];
+        obj = this; /* 保存this指针 */
+
+        // 遍历当前点击的行,将td的内容放入数组
+        $(this).parent().siblings().each(function () {
+            trvalues.push($(this).text());
+        });
+        // 遍历弹出框,将数组内容写入弹出框
+        $('#popDiv').children('p').children('input').each(function (i) {
+            $(this).val(trvalues[i]);
+        });
+
+        // 显示模态对话框
+        $('#mask').show();
+        $('#popDiv').show();
+
+        // 当点击确定按钮
+        $('#submit').click(function () {
+            var inputvalues = [];
+            // 遍历弹出框的值,将值写入数组
+            $('#popDiv').children('p').children('input').each(function () {
+                inputvalues.push($(this).val());
+            });
+
+            // 利用保存的指针返回当前选择的tr对象,将数组内容写入文本
+            $(obj).parent().siblings().each(function (i) {
+                $(this).text(inputvalues[i]);
+            });
+
+            // 隐藏模态对话框
+            $('#mask').hide();
+            $('#popDiv').hide();
+        });
+
+        // 当点击取消
+        $('#close').click(function () {
+            $('#popDiv').hide();
+            $('#mask').hide();
+        });
+    });
+
+    // 删除
+    $('.del').click(function () {
+        $(this).parent().parent().remove();
+    });
+
+
+</script>
+</html>

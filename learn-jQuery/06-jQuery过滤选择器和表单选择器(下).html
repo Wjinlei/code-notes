@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery过滤选择器和表单选择器(下)</title>
+</head>
+<body>
+    <p title="test">测试文本</p>
+    <p title="js">javascript</p>
+    <p title="js" myattr="my">javascript</p>
+    <div>
+        <p>div中的第1个p标签</p>
+        <p>div中的第2个p标签</p>
+        <p>div中的第3个p标签</p>
+        <p>div中的第4个p标签</p>
+        <p>div中的第5个p标签</p>
+        <p>div中的第6个p标签</p>
+    </div>
+    <div>
+        <p>div中的p标签</p>
+    </div>
+
+    <form action="#" method="get">
+        <input type="hidden" name="hidetext" value="我是隐藏的文本框" />
+        <input type="text" name="username" value="在这里输入用户名" />
+        <input type="password" name="password" />
+        <input type="submit" value="提交" />
+        <input type="button" value="我是一个按钮" />
+        <input type="radio" value="我是单选按钮" />
+        <input type="checkbox" value="我是复选按钮" />
+        <input type="reset" value="我是重置按钮" />
+        <textarea cols="30" rows="10" >我是文本区域框</textarea>
+        <select>
+            <option value="1">我是下拉菜单1</option>
+            <option value="2" selected="selected">我是下拉菜单2</option>
+            <option value="3">我是下拉菜单2</option>
+        </select>
+        <input type="file" />
+        <input type="image" src="https://www.baidu.com/img/bd_logo1.png" />
+        <input type="text" value="我是不能修改的文本框" disabled="disabled">
+    </form>
+</body>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+    $(function () {
+        // 属性选择器,属性是可以自定义的
+        $('p[title]').css('background-color', 'blue'); /* 选择拥有此属性的元素 */
+        // $('p[title=js]').css('background-color', 'red'); /* 选择拥有指定属性值的元素 */
+        // $('p[title=js][myattr=my]').css('background-color', 'red'); /* 复合属性选择器,选择既有title=js又有myattr=my的元素 */
+
+
+        // 子元素过滤选择器
+
+        /* 选择父元素中的第一个子元素*/
+        // $('div p:first-child').css('background-color', 'red'); /* 基本上没什么用,因为用first可以做到 */
+        /* 选择父元素中的最后一个子元素 */
+        // $('div p:last-child').css('background-color', 'red'); /* 基本上没什么用,因为用last可以做到 */
+        // $('div p:only-child').css('background-color', 'red'); /* 选择元素中只包含一个子元素的元素 */
+        // $('div p:nth-child(2n-1)').css('background-color', 'red'); /* 选择父元素中的第n个子元素,它是从1开始的,eq()是从0开始的 */
+
+        // 表单选择器
+        // $(':input').css('background-color', 'red'); /* input 选择所有input,textarea,select和button元素 */
+        // $(':text').css('background-color', 'red'); /* text 选择所有类型为text的input元素 */
+        // $(':password').css('background-color', 'red'); /* password 选择所有类型为password的元素 */
+        // $(':radio').css('margin-left', '20px'); /* radio 选择所有类型为radio的元素 */
+        // $(':checkbox').css('margin-left', '20px'); /* checkbox 选择所有类型为checkbox的元素 */
+        // $(':submit').css('background-color', 'red'); /* submit 选择所有类型为submit的元素 */
+        // $(':image').css({'width': '200px', 'height': '100px'}); /* image 选择所有类型为image的元素 */
+        // $(':reset').css('background-color', 'red'); /* reset 选择所有类型为reset的元素 */
+        // $(':button').css('background-color', 'red'); /* button 择所有按钮元素和类型为button的元素。 */
+        // $(':file').css('background-color', 'red'); /* file 选择所有类型为文件(file)的元素。 */
+        // $(':disabled').css('background-color', 'red'); /* disabled 选择所有被禁用的元素。 */
+        // $(':enabled').css('background-color', 'red'); /* enabled 选择所有可用的元素 */
+        // alert($(':selected').html()); /* selected 获取 select 元素中所有被选中的元素。 */
+        // alert($('input:hidden').val()); /* hidden 选择不可见的元素 */
+    })
+</script>
+</html>

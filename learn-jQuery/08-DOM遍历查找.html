@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM遍历查找</title>
+</head>
+<body>
+    <div id="outer">
+        outer
+        <div id="inner" style="position: absolute; left:10px; top:20px;">
+            inner
+            <p id="p1">我是inner中的<span>第1个</span>p标签</p>
+            <p id="p2">我是inner中的第2个p标签</p>
+            <p id="p3">我是inner中的第3个p标签</p>
+            <div>我是inner中的div标签</div>
+        </div>
+    </div>
+    <form action="#" method="get">
+        <input type="text" value="第1个input的值" />
+        <input type="text" value="第2个input的值" />
+        <input type="text" value="第3个input的值" />
+        <input type="text" value="第4个input的值" />
+    </form>
+
+</body>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+    $(function () {
+        // 遍历查找
+        // $('#inner').children('p').css('background-color', 'red'); /* 根据指定选择器,选取子元素 */
+        // $('#p1').parent().css('background-color', 'red'); /* 根据指定选择器,选取父元素 */
+        // $('#p1').parents().css('background-color', 'red'); /* 根据指定选择器,选取所有父元素(包括document) */
+        // $('#p1').offsetParent().css('background-color', 'red'); /* 选取第一个position设为relative或者absolute的父元素 */
+        // $('#p1').next().css('background-color', 'red'); /* 选取其后面紧邻的兄弟元素 */
+        // $('#p1').nextAll().css('background-color', 'red'); /* 根据指定选择器,选取其后面紧邻的所有兄弟元素 */
+        // $('#p3').prev().css('background-color', 'red'); /* 选取前一个兄弟元素 */
+        // $('#p3').prevAll().css('background-color', 'red'); /* 根据指定选择器,选取前面所有兄弟元素 */
+        // $('#p2').siblings().css('background-color', 'red'); /* 根据指定选择器,选取前后所有兄弟元素 */
+
+        /* .find()方法允许我们能够通过查找DOM树中的这些元素的后代元素，匹配的元素将构造一个新的jQuery对象。
+        .find()和.children()方法是相似的，但后者只是再DOM树中向下遍历一个层级（注：就是只查找子元素，而不是后代元素）。 */
+        // $('#inner').find('p').css('background-color', 'red');
+
+
+        // $('span').parent().css('background-color', 'red');
+        // $('span').css('background-color', 'blue');
+        // $('span').parent().css('background-color', 'red').end().css('background-color', 'blue');
+        /* $('span').parent() 其实选择的是p1, 如果我们还想让span变成蓝色背景,该怎么办呢? 答我们可以写两句jquery,但是,
+         * 写两句又太麻烦了,因此我们可以使用 end() 函数来结束当前的parent状态,返回到以前的状态,也就是 span了, 所以end
+         * 一般用来简化语法 , 是个很重要的函数. */
+
+
+        // $('#p1').nextAll().addBack().css('background-color', 'red');
+        /* addBack你可以把它理解为end的反向操作, end()是结束当前状态, addBack是把当前元素添加到当前状态,也就是把p1添加到nextAll
+        * 中,这样就可以选择到p1了*/
+
+
+        /* 遍历一个jQuery对象，为每个匹配元素执行一个函数 */
+        // 它和map的区别就是,map会返回一个jQuery对象,而它不会
+        $('input').each(function () {
+            alert($(this).val());
+        });
+    })
+</script>
+</html>

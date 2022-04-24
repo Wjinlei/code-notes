@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格隔行变色练习</title>
+    <style type="text/css">
+        table{
+            width: 500px;
+            border: 1px solid red;
+            border-collapse: collapse;
+        }
+
+        #t td{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <td>1111111</td>
+                <td>2222222</td>
+                <td>3333333</td>
+                <td>4444444</td>
+            </tr>
+            <tr>
+                <td>1111111</td>
+                <td>2222222</td>
+                <td>3333333</td>
+                <td>4444444</td>
+            </tr>
+            <tr>
+                <td>1111111</td>
+                <td>2222222</td>
+                <td>3333333</td>
+                <td>4444444</td>
+            </tr>
+            <tr>
+                <td>1111111</td>
+                <td>2222222</td>
+                <td>3333333</td>
+                <td>4444444</td>
+            </tr>
+            <tr>
+                <td>1111111</td>
+                <td>2222222</td>
+                <td>3333333</td>
+                <td>4444444</td>
+            </tr>
+           <tr>
+                <td>1111111</td>
+                <td>2222222</td>
+                <td>3333333</td>
+                <td>4444444</td>
+            </tr>
+           <tr>
+                <td>1111111</td>
+                <td>2222222</td>
+                <td>3333333</td>
+                <td>4444444</td>
+            </tr>
+           <tr>
+                <td>1111111</td>
+                <td>2222222</td>
+                <td>3333333</td>
+                <td>4444444</td>
+            </tr>
+           <tr>
+                <td>1111111</td>
+                <td>2222222</td>
+                <td>3333333</td>
+                <td>4444444</td>
+            </tr>
+           <tr>
+                <td>1111111</td>
+                <td>2222222</td>
+                <td>3333333</td>
+                <td>4444444</td>
+            </tr>
+           <tr>
+                <td>1111111</td>
+                <td>2222222</td>
+                <td>3333333</td>
+                <td>4444444</td>
+            </tr>
+           <tr>
+                <td>1111111</td>
+                <td>2222222</td>
+                <td>3333333</td>
+                <td>4444444</td>
+            </tr>
+           <tr>
+                <td>1111111</td>
+                <td>2222222</td>
+                <td>3333333</td>
+                <td>4444444</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script>
+
+    // 原生js的方法
+    // var trs = document.getElementsByTagName('tr');
+    // for(var i=0; i<trs.length; i++){
+    //     if(i%2===0){
+    //         trs[i].style.backgroundColor = 'yellow';
+    //     }else{
+    //         trs[i].style.backgroundColor = '#abcdef';
+    //     }
+    // }
+
+    // jQuery的方式
+    $('tr').filter(':even').css('background-color', 'yellow').end().filter(':odd').css('background-color', '#abcdef');
+
+    /*
+    * 总结: 链式操作,用方法,不要用选择器
+    * */
+</script>
+</html>
