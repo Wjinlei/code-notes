@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.wjinlei.mybatis">
+    <delete id="deleteFromLinksUnHandledWhereLinkIs" parameterType="String">
+        DELETE
+        FROM LINKS_UN_HANDLED
+        WHERE link = #{link}
+    </delete>
+
+    <update id="updateLinksUnHandled" parameterType="HashMap">
+        INSERT INTO
+        <choose>
+            <when test="table_name == 'LINKS_IN_HANDLED'">
+                LINKS_IN_HANDLED
+            </when>
+            <otherwise>
+                LINKS_UN_HANDLED
+            </otherwise>
+        </choose>
+        (link)
+        VALUES (#{link})
+    </update>
+
+    <update id="updateNews" parameterType="String">
+        INSERT INTO NEWS(title, content, url)
+        VALUES (#{title}, #{content}, #{url})
+    </update>
+
+    <select id="selectLinkFromLinksInHandledWhereLinkIs" parameterType="String" resultType="boolean">
+        SELECT count(link)
+        FROM LINKS_IN_HANDLED
+        WHERE link = #{url}
+    </select>
+
+    <select id="selectLinkFromLinksUnHandledLimit1" resultType="String">
+        SELECT link
+        FROM LINKS_UN_HANDLED
+        LIMIT 1
+    </select>
+</mapper>
