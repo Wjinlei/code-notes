@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="blog.mapper">
+    <select id="select" resultMap="blogMap">
+        SELECT
+        b.id AS b_id,
+        b.title AS b_title,
+        b.description AS b_description,
+        b.content AS b_content,
+        b.atIndex AS b_atIndex,
+        b.created_at AS b_createdAt,
+        b.updated_at AS b_updatedAt,
+        u.id AS u_id,
+        u.username AS u_username,
+        u.password AS u_password,
+        u.avatar AS u_avatar,
+        u.created_at AS u_createdAt,
+        u.updated_at AS u_updatedAt
+        FROM blog b
+        JOIN user u on u.id = b.user_id
+        <where>
+            <if test="user_id != null">
+                user_id = #{user_id}
+            </if>
+            <if test="atIndex != null">
+                AND atIndex = #{atIndex}
+            </if>
+        </where>
+        LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="selectWhereId" resultMap="blogMap">
+        SELECT b.id          AS b_id,
+               b.title       AS b_title,
+               b.description AS b_description,
+               b.content     AS b_content,
+               b.atIndex     AS b_atIndex,
+               b.created_at  AS b_createdAt,
+               b.updated_at  AS b_updatedAt,
+               u.id          AS u_id,
+               u.username    AS u_username,
+               u.password    AS u_password,
+               u.avatar      AS u_avatar,
+               u.created_at  AS u_createdAt,
+               u.updated_at  AS u_updatedAt
+        FROM blog b
+                 JOIN user u on u.id = b.user_id
+        WHERE b.id = #{id}
+    </select>
+
+    <resultMap id="blogMap" type="Blog">
+        <result property="id" column="b_id"/>
+        <result property="title" column="b_title"/>
+        <result property="description" column="b_description"/>
+        <result property="content" column="b_content"/>
+        <result property="atIndex" column="b_atIndex"/>
+        <result property="userId" column="u_id"/>
+        <result property="createdAt" column="b_createdAt"/>
+        <result property="updatedAt" column="b_updatedAt"/>
+        <association property="user" javaType="User">
+            <result property="id" column="u_id"/>
+            <result property="username" column="u_username"/>
+            <result property="password" column="u_password"/>
+            <result property="avatar" column="u_avatar"/>
+            <result property="createdAt" column="u_createdAt"/>
+            <result property="updatedAt" column="u_updatedAt"/>
+        </association>
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO blog (title, description, content, atIndex, user_id)
+        VALUES (#{title}, #{description}, #{content}, #{atIndex}, #{userId})
+    </insert>
+
+    <update id="update" useGeneratedKeys="true" keyProperty="id">
+        update blog
+        <set>
+            <if test="title != null">title=#{title},</if>
+            <if test="content != null">content=#{content},</if>
+            <if test="description != null">description=#{description},</if>
+            <if test="atIndex != null">atIndex=#{atIndex}</if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <delete id="delete">
+        DELETE
+        FROM blog
+        WHERE id = #{id}
+    </delete>
+
+</mapper>
