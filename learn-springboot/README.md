@@ -1,6 +1,6 @@
 ## Springboot-blog project
 
-![index](/index.png)
+![index](./index.png)
 
 ## 快速开始
 
