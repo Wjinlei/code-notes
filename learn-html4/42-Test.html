@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页实战8IE浏览器兼容</title>
+    <!--引入初始化css-->
+    <link rel="stylesheet" href="css/init.css" />
+    <!--导航相关css-->
+    <link rel="stylesheet" href="css/header.css" />
+    <!--引入main区域css-->
+    <link rel="stylesheet" href="css/main.css" />
+    <!--引入footer区域css-->
+    <link rel="stylesheet" href="css/footer.css" />
+
+    <style type="text/css">
+        #container{
+            margin: auto;
+            width: 1000px;
+        }
+    </style>
+
+    <!--
+    问题1:
+    chrome 文字大小是12,但firefox还是10,因为chrome限制了文字最小是12,但Firefox没有,
+    所以建议浏览器不同的文字我们手动设定它的大小,而不要让它默认
+
+    问题2:
+    文字的颜色,在不同浏览器也可能不同,所以尽量不要默认,而是手动设置
+
+    问题3: IE双倍margin Bug
+    在低版本IE中, 对于左浮元素, 左margin是定义的2倍; 右浮元素, 右margin是定义的2倍
+    如何解决?
+    答: _display:inline; 这个只有ie才认识,所以其他浏览器无影响,注意签名的下划线
+
+    问题4:
+    IE下不认识 a:link 这个伪类,所以不建议写,而是直接省略:link 用a就可以了
+
+    问题5: IE的3像素Bug
+    IE对于float的处理,默认float:left一个元素后,它后面的元素会被float的元素遮盖,但在IE中
+    不会,在低版本IE中,后面的元素也会随之一起漂浮,并且两个元素间相隔着大概3个像素的距离,这
+    叫做IE3像素Bug,总的来说这不是IE的Bug,而是你书写不规范造成的,如果你想要两个元素浮动
+    就尽量把两个元素都float,不要只float一个,这样就没有问题。
+
+    问题6, 关于IE低版本1像素div显示问题
+    在低版本IE浏览器中,如果定义一个1x1的div,在IE中就会显示异常,它会变成一个1x5左右的长方形
+    所以为了避免这个问题,建议在定义极小的元素的时候,加上overflow: hidden这个css属性
+    它的作用是一旦溢出则隐藏,具体看附录-关于overflow
+    -->
+
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <img src="./images/logo.jpg" alt="logo" id="logo" />
+            <ul id="nav">
+                <li><a href="#">导航1</a></li>
+                <li><a href="#">导航2</a></li>
+                <li><a href="#">导航3</a></li>
+                <li><a href="#">导航4</a></li>
+                <li><a href="#">导航5</a></li>
+                <li><a href="#">导航6</a></li>
+                <li><a href="#">导航7</a></li>
+            </ul>
+        </div>
+        <img id="banner" src="./images/about_banner.jpg" alt="banner" />
+        <div id="main">
+            <div id="lside">
+                <div class="subtitle">
+                    <img src="./images/circle.gif" alt="核心业务背景图片" />
+                    <h1>核心业务</h1>
+                    <a href="#">MORE&gt;&gt;</a>
+                </div>
+                <div class="four">
+                    <h2>电子商务类网站建设</h2>
+                    <img src="./images/eshop_service.jpg" alt="业务缩略图" />
+                    <ul>
+                        <li><a href="">方便的订单管理1</a></li>
+                        <li><a href="">方便的订单管理2</a></li>
+                        <li><a href="">方便的订单管理3</a></li>
+                        <li><a href="">方便的订单管理4</a></li>
+                        <li><a href="">方便的订单管理5</a></li>
+                    </ul>
+                </div>
+                <div class="four">
+                    <h2>电子商务类网站建设</h2>
+                    <img src="./images/eshop_service.jpg" alt="业务缩略图" />
+                    <ul>
+                        <li><a href="">方便的订单管理1</a></li>
+                        <li><a href="">方便的订单管理2</a></li>
+                        <li><a href="">方便的订单管理3</a></li>
+                        <li><a href="">方便的订单管理4</a></li>
+                        <li><a href="">方便的订单管理5</a></li>
+                    </ul>
+                </div>
+                <div class="four">
+                    <h2>电子商务类网站建设</h2>
+                    <img src="./images/eshop_service.jpg" alt="业务缩略图" />
+                    <ul>
+                        <li><a href="">方便的订单管理1</a></li>
+                        <li><a href="">方便的订单管理2</a></li>
+                        <li><a href="">方便的订单管理3</a></li>
+                        <li><a href="">方便的订单管理4</a></li>
+                        <li><a href="">方便的订单管理5</a></li>
+                    </ul>
+                </div>
+                <div class="four">
+                    <h2>电子商务类网站建设</h2>
+                    <img src="./images/eshop_service.jpg" alt="业务缩略图" />
+                    <ul>
+                        <li><a href="">方便的订单管理1</a></li>
+                        <li><a href="">方便的订单管理2</a></li>
+                        <li><a href="">方便的订单管理3</a></li>
+                        <li><a href="">方便的订单管理4</a></li>
+                        <li><a href="">方便的订单管理5</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="rside">
+                <div class="subtitle">
+                    <img src="./images/circle.gif" alt="核心业务背景图片" />
+                    <h1>文章观点</h1>
+                    <a href="#">MORE&gt;&gt;</a>
+                </div>
+                <ul id="art">
+                    <li><a href="#">这是一篇好文章1</a></li>
+                    <li><a href="#">这是一篇好文章2</a></li>
+                    <li><a href="#">这是一篇好文章3</a></li>
+                    <li><a href="#">这是一篇好文章4</a></li>
+                    <li><a href="#">这是一篇好文章5</a></li>
+                </ul>
+                <div class="subtitle">
+                    <img src="./images/circle.gif" alt="核心业务背景图片" />
+                    <h1>联系我们</h1>
+                    <a href="#">MORE&gt;&gt;</a>
+                </div>
+                <div id="contact"></div>
+            </div>
+            <div class="clr"></div> <!-- 创建一个div专门用于撑起main, css设置它clear: both属性,这样它就可以撑起main -->
+        </div>
+        <div id="footer">
+            <ul>
+                <li><a href="#">联系我们1</a></li>
+                <li><a href="#">联系我们2</a></li>
+                <li><a href="#">联系我们3</a></li>
+                <li><a href="#">联系我们4</a></li>
+                <li><a href="#">联系我们5</a></li>
+                <li><a href="#">联系我们6</a></li>
+                <li><a href="#">联系我们7</a></li>
+            </ul>
+            <address>&copy; 2006-2009 北京市灵犀慧通科技有限公司 版权所有 <a href="https://www.baidu.com">https://www.baidu.com</a> 京ICP备07020337号</address>
+        </div>
+    </div>
+</body>
+</html>

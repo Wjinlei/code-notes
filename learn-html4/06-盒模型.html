@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒模型</title>
+    <style type="text/css">
+        #container{
+            width: 1000px;
+            height: 600px;
+            background-color: green;
+        }
+
+        div{
+            width: 400px;
+            height: 200px;
+            background-color: blue;
+            float: left;
+        }
+
+        #test3{
+            width: 1000px;
+        }
+
+        #test{
+            /*margin: 外边距*/
+            margin: 10px;
+            /*margin-top: 10px;*/ /*距上10像素*/
+            /*margin-bottom: 10px;*/ /*距下10像素*/
+            /*margin-left: 10px;*/ /*距左10像素*/
+            /*margin-right: 10px;*/ /*距右10像素*/
+
+            /*如果只写2个,它是按照上右下左的方向来分配值,没分配到的边,则以对边的值为准*/
+            /*margin: 10px 20px;*/
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="test"></div>
+    <div></div>
+    <div id="test3"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd"> <!-- 要用框架集, DTD必须改成这个 -->
+<head>
+<title>附录-框架集</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+	<!-- 什么是框架集? 就是一个网页套多个网页 -->
+	<!-- 注意这个框架集只作了解,因其在html5中已被弃用! -->
+
+	<!-- 框架集连body都不需要! -->
+
+	<frameset rows="200px,*"> <!-- 创建一个框架,按行分两部分,上面高200像素,剩下的全部给下面 -->
+		<frame src="43-header.html"></frame> <!-- 200像素部分关联一个html文件 -->
+		<frameset cols="200px,*"> <!-- 剩下部分再按照列分两部分, 左边200个像素, 剩下的全部给右边 -->
+			<frame src="43-left.html"></frame> <!-- 左边关联一个html -->
+			<frame src="43-left.html" name="you"></frame> <!-- 右边关联一个html -->
+		</frameset>
+	</frameset>
+</html>

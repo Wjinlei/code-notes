@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实战首页布局</title>
+    <style type="text/css">
+        #container{
+            width: 1000px;
+            background-color: #dddddd;
+        }
+
+        #header{
+            height: 120px;
+            background-color: lightsteelblue;
+        }
+
+        #main{
+            height: 600px;
+            background-color: cornflowerblue;
+        }
+
+        #lside{
+            float: left;
+            width: 700px;
+            height: 600px;
+            background-color: darkviolet;
+        }
+
+        #rside{
+            float: right;
+            width: 300px;
+            height: 600px;
+            background-color: coral;
+        }
+
+        #footer{
+            height: 120px;
+            background-color: cadetblue;
+        }
+
+    </style>
+</head>
+<body>
+    <!--一个小技巧,-->
+    <!--我们可以把所有的div包含在一个总div里面,这样做的好处是,-->
+    <!--如果我们想对所有的div更改属性或做一些操作的话就要方便点,-->
+    <!--只需要操作总的div即可-->
+    <div id="container">
+        <div id="header"></div>
+        <div id="main">
+            <div id="lside"></div>
+            <div id="rside"></div>
+        </div>
+        <div id="footer"></div>
+    </div>
+</body>
+</html>

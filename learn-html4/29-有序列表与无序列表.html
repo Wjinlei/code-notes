@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>有序列表与无序列表</title>
+    <style type="text/css">
+        ul li{
+            /*list-style-type: square; !*list-style-type可以控制列表的样式,具体值可以参考css手册*!*/
+            /*一般我们把它们置为none,因为浏览器兼容问题*/
+            list-style-type: none;
+            /*一般我们用背景图片来取代li小图标的效果*/
+        }
+
+        ol li{
+            /*list-style-type: upper-roman;*/
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+<!--无序列表-->
+<ul>
+    <li>春</li>
+    <li>夏</li>
+    <li>秋</li>
+    <li>冬</li>
+</ul>
+
+<!--有序列表-->
+<ol>
+    <li>春</li>
+    <li>夏</li>
+    <li>秋</li>
+    <li>冬</li>
+</ol>
+</body>
+</html>

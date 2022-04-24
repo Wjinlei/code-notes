@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文字控制</title>
+    <style type="text/css">
+        #test1{
+            color: blue; /*color属性控制颜色*/
+            font-style: italic; /*字体的样式 italic斜体*/
+            font-weight: bold; /*字体重量, bold粗体*/
+            font-size: 18px; /*字体大小*/
+            line-height: 46px; /*行高*/
+            font-family: Consolas,serif; /*字体*/
+        }
+
+        #test2{
+            color: blue;
+            font: italic bold 18px/46px Consolas; /*一行集中控制上面5个属性,但顺序要注意*/
+        }
+
+    </style>
+</head>
+<body>
+        <div id="test1">离离原上草,一岁一枯荣。</div>
+        野火烧不尽,春风吹又生。<br/>
+        <div id="test2">远芳侵古道,晴翠接荒城。</div>
+        又送王孙去,萋萋满别情。<br/>
+</body>
+</html>

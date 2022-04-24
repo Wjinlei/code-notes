@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内联与块状元素的转化</title>
+    <style type="text/css">
+        span{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            display: block; /*将元素转化为块状元素*/
+        }
+
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            display: inline; /*将元素转化为内联元素*/
+        }
+
+        #testnone{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            display: none; /*将元素设置为不显示*/
+        }
+    </style>
+</head>
+<body>
+    <span>行内元素span</span>
+    <div>块状元素</div>
+
+    <div id="testnone">None表示没有,不显示</div>
+</body>
+</html>

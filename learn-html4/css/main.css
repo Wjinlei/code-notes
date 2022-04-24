@@ -1,0 +1,132 @@
+#banner{
+    margin: 5px 0;
+}
+
+.clr{
+    clear: both;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.subtitle{
+    height: 37px;
+    background-image: url("../images/index_main_top_bg.gif");
+}
+
+.subtitle img{
+    margin: 5px 0 0 10px;
+    float: left;
+}
+
+.subtitle h1{
+    font-family: 微软雅黑, 黑体, sans-serif;
+    font-size: 18px;
+    margin-left: 10px;
+    /*margin-top: 5px;*/
+    line-height: 37px; /*利用行高来居中*/
+    float: left;
+    color: #363636;
+}
+
+.subtitle a{
+    font-size: 14px;
+    font-family: Consolas, serif;
+    float: right;
+    color: #888888;
+    line-height: 37px; /*利用行高来居中*/
+}
+
+#lside{
+    height: 468px;
+    width: 694px;
+    float:left;
+    border: 1px solid #EEEEEE;
+}
+
+#rside{
+    height: 468px;
+    width: 294px;
+    float:right;
+}
+
+#art{
+    background: #EEEEEE;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding-top: 10px;
+    height: 185px;
+}
+
+#art li{
+
+}
+
+#art li a{
+    display: block;
+    background-image: url("../images/article_head.gif");
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    height: 29px;
+    /*padding-top: 5px;*/
+    line-height: 29px; /*利用行高来设置居中*/
+    color: #888888;
+    font-size: 14px;
+}
+
+#art li a:hover{
+    background-image: url("../images/article_on_bg.gif");
+    background-repeat: no-repeat;
+    color: #FF832C;
+}
+
+#contact{
+    margin-top: 2px;
+    height: 183px;
+    background-color: #EEEEEE;
+}
+.four{
+    width: 335px;
+    height: 200px;
+    background-color: #EEEEEE;
+    margin: 10px 10px 1px 1px;
+    float: left;
+    _display:inline; /*解决IE双倍margin Bug*/
+}
+
+.four img{
+    float: left;
+    margin-left: 10px;
+    padding: 6px;
+    background-color: white;
+}
+
+.four ul{
+    float: left;
+    margin-left: 18px;
+    margin-top: 5px;
+}
+
+.four li{
+    list-style-image: url("../images/service_intro_bg.gif");
+    height: 25px;
+}
+
+.four h2{
+    margin: 6px 0 6px 10px;
+    font-size: 16px;
+    font-family: 微软雅黑, 黑体, serif;
+}
+
+.four a{
+    color: #888888;
+    font-size: 14px;
+}
+
+.four a:visited{
+    color: #808080;
+}
+
+.four a:hover{
+    color: #FF832C;
+}

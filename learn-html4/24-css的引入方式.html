@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css的引入方式</title>
+
+    <!--第一种引入方式,把css写在一个外部文件里,在HTMLhead部分引入-->
+    <!--<link href="css/my.css" rel="stylesheet" type="text/css" />-->
+
+    <!--第二种,直接写-->
+    <style type="text/css">
+        span{
+            font-family: Consolas,serif;
+        }
+    </style>
+
+    <!--第三种,多个css文件时-->
+    <!--<style type="text/css">@import "css/my.css";</style>-->
+
+</head>
+<body>
+    <!--第四种,直接在html标签里写-->
+    <span style="font-size: 24px;">测试文字,Consolas</span>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css选择器</title>
+    <style type="text/css">
+        /*直接写标签名,就是标签选择器,它会选择所有p标签*/
+        p{
+            font-family: Consolas,serif;
+            font-size: 18px;
+        }
+        /*#号id名,就是id选择器,它会选择id为p2的标签*/
+        #p2{
+            color: red;
+        }
+
+        /*.号class名,就是类名选择器,它会选择class名为p的标签*/
+        .p{
+            color: blue;
+        }
+
+        /*标签名空格标签名,就是派生选择器,本例中它会选择div下面的p标签,它是根据元素的上下级关系来选择的*/
+        div p{
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <p>这是一个段落,请通过标签选择器来选择</p>
+    <p id="p2">这是一个段落(id),请通过id选择器来选择</p>
+    <p class="p">这是一个段落(class),请通过class选择器来选择</p>
+
+    <div>
+        <p>这是div中的p标签,请用派生选择器来选择</p>
+    </div>
+</body>
+</html>

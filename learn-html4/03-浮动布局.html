@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动布局</title>
+    <style type="text/css">
+        #lside{
+            height: 100px;
+            background-color: red;
+            float:left; /*脱离文档流,向左漂浮*/
+        }
+
+        #rside{
+            height: 100px;
+            background-color: cornflowerblue;
+            float:right; /*脱离文档流,向右漂浮*/
+        }
+
+        /*普通div将会在浮动div的下面*/
+        #comm{
+            width: 300px;
+            height: 300px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="lside">我是左</div>
+    <div id="rside">我是右</div>
+    <div id="comm">普通div</div>
+</body>
+</html>

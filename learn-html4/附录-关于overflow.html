@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>附录-关于overflow</title>
+    <style type="text/css">
+        div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid blue;
+            /*overflow: hidden; !*可以指定溢出部分隐藏,不显示hidden,显示则是visible*!*/
+            /*overflow: scroll; !*还可以指定显示滚动条,如果设置为auto,则是溢出才显示滚动条*!*/
+            overflow: auto; /*所以推荐设置为auto*/
+        }
+
+        p{
+            border: 1px solid gray;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <p>
+            会议经过表决，通过了关于政府工作报告的决议。决议指出，
+            会议高度评价过去五年我国经济社会发展取得的历史性成就、
+            发生的历史性变革，充分肯定国务院过去五年的工作，
+            同意报告提出的2018年经济社会发展总体要求、
+            政策取向和对政府工作的建议，决定批准这个报告。
+
+            会议经过表决，通过了关于政府工作报告的决议。决议指出，
+            会议高度评价过去五年我国经济社会发展取得的历史性成就、
+            发生的历史性变革，充分肯定国务院过去五年的工作，
+            同意报告提出的2018年经济社会发展总体要求、
+            政策取向和对政府工作的建议，决定批准这个报告。
+        </p>
+    </div>
+</body>
+</html>

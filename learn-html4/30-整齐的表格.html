@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>整齐的表格</title>
+    <style type="text/css">
+        /*尽量用css来控制表格*/
+        table{
+            border-style: solid;
+            border-color: red;
+            border-collapse: collapse; /*让表格边框融合*/
+        }
+    </style>
+</head>
+<body>
+    <!--border属性定义表格的边框线大小-->
+    <table border="1">
+        <!--thead表格头-->
+        <thead>
+            <tr>
+                <!--th表示标头,它默认是粗体-->
+                <th>测试表头</th>
+                <th>测试表头</th>
+                <th>测试表头</th>
+                <th>测试表头</th>
+            </tr>
+        </thead>
+        <!--tbody表格体-->
+        <tbody>
+            <!--tr表示行-->
+            <tr>
+                <!--td表示单元格-->
+                <td>测试文字</td>
+                <td>测试文字</td>
+                <td>测试文字</td>
+                <td>测试文字</td>
+            </tr>
+            <tr>
+                <!--colspan让当前单元格左右占4个单元格的大小,横跨4列-->
+                <td colspan="4">测试文字</td>
+            </tr>
+            <tr>
+                <!--rowspan让当前单元格上下占2个单元格大小,竖直跨2行-->
+                <td rowspan="2">测试文字</td>
+                <td>测试文字</td>
+                <td>测试文字</td>
+                <td>测试文字</td>
+            </tr>
+            <tr>
+                <td>测试文字</td>
+                <td>测试文字</td>
+                <td>测试文字</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,28 @@
+#header{
+    background: white url("../images/top_bg.jpg");
+    height: 128px;
+}
+
+/*要想让li横起来,就必须浮动*/
+#nav li{
+    float: left;
+    margin-right: 1px;
+    width: 90px;
+}
+
+/*因为a标签是内联元素,无法设置宽高,所以我们需要把它转化成块状元素*/
+#nav li a{
+    font-size: 16px;
+    font-family: 微软雅黑, sans-serif;
+    text-align: center;
+    display: block;
+    height: 33px;
+    line-height: 33px; /*利用行高来实现居中*/
+    color: #363636;
+}
+
+/*鼠标移动上去的时候,把字的颜色设置为白色,并且加一个背景*/
+#nav a:hover{
+    color: white;
+    background-image: url("../images/nav_on.gif");
+}

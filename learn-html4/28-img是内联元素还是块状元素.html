@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>img是内联元素还是块状元素</title>
+    <style type="text/css">
+        /*我们发现它可以设置宽和高*/
+        img{
+            width: 100px;
+            height: 100px;
+            margin: 0; /*我们发现margin并没有效果,这证明它不是块状元素*/
+            display: block;
+        }
+
+        /*我们发现div和图片之间有个微小的间隔,我们知道块状元素是紧紧挨在一起的*/
+        /*那么我们设置它的margin值试试*/
+        div{
+            width: 500px;
+            height: 500px;
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <!--img是内联元素还是块状元素-->
+    <!--block元素会换行,inline不会-->
+
+    <!--从下面看样子是内联元素-->
+    <!--但是我们知道内联元素不可以设置宽和高,我们设置看看-->
+    <img src="https://www.baidu.com/img/bd_logo1.png" alt="百度logo" title="百度logo"/>
+    <img src="image2.png" alt="水猿大圣" title="水猿大圣"/>
+    <div></div>
+
+<!--总结: img标签确实是内联元素,只不过它是一个特殊的内联元素,它拥有内联元素的特征,也拥有块状元素的特征-->
+<!--这导致我们在处理img标签的时候很麻烦,所以推荐在css初始化时,将img标签转换成block,然后再把它的margin,border等置为0-->
+<!--值,这样才是最好的办法-->
+</body>
+</html>

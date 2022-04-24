@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>清除浮动</title>
+    <style type="text/css">
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            float: left;
+        }
+
+        #div2{
+            width: 100px;
+            height: 100px;
+            background-color: cornflowerblue;
+            float: left;
+        }
+
+        #div3{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            clear: left; /*清除左浮元素, 声明我的头上不允许有左浮元素*/
+
+            /*clear: right;*/ /*声明我的头上不允许有右浮元素*/
+            /*clear: bottom;*/ /*声明我的头上不允许有左右浮元素*/
+        }
+
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+</body>
+</html>

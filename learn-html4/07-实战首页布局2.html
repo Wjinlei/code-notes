@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实战首页布局</title>
+    <style type="text/css">
+        #container{
+            width: 1000px;
+            background-color: #dddddd;
+        }
+
+        #header{
+            height: 120px;
+            background-color: lightsteelblue;
+        }
+
+        #main{
+            height: 600px;
+            background-color: cornflowerblue;
+        }
+
+        #lside{
+            float: left;
+            width: 700px;
+            height: 600px;
+            background-color: darkviolet;
+        }
+
+        /*通过.类名来选择被标识为class的标签*/
+        .four{
+            width: 330px;
+            height: 280px;
+            background-color: orange;
+            float: left;
+            margin: 10px;
+        }
+
+        #rside{
+            float: right;
+            width: 300px;
+            height: 600px;
+            background-color: coral;
+        }
+
+        #footer{
+            height: 120px;
+            background-color: cadetblue;
+        }
+
+    </style>
+</head>
+<body>
+    <!--一个小技巧,-->
+    <!--我们可以把所有的div包含在一个总div里面,这样做的好处是,-->
+    <!--如果我们想对所有的div更改属性或做一些操作的话就要方便点,-->
+    <!--只需要操作总的div即可-->
+    <div id="container">
+        <div id="header"></div>
+        <div id="main">
+            <div id="lside">
+                <!--class属性可以给一个标签归个类,通常我们把相同需求的标签归为一类-->
+                <!--这样通过css控制的时候,就不必写多个id,而只用一个类就可以控制这些标签-->
+                <div class="four"></div>
+                <div class="four"></div>
+                <div class="four"></div>
+                <div class="four"></div>
+            </div>
+            <div id="rside"></div>
+        </div>
+        <div id="footer"></div>
+    </div>
+</body>
+</html>

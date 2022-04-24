@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页实战2导航</title>
+    <!--引入初始化css-->
+    <link rel="stylesheet" href="css/init.css" />
+    <style type="text/css">
+        #container{
+            width: 1000px;
+        }
+        #header{
+            background: white url("./images/top_bg.jpg");
+            height: 128px;
+        }
+
+        /*要想让li横起来,就必须浮动*/
+        #nav li{
+            float: left;
+            margin-right: 1px;
+            width: 90px;
+        }
+
+        /*因为a标签是内联元素,无法设置宽高,所以我们需要把它转化成块状元素*/
+        #nav a:link{
+            color: #363636;
+            font-size: 16px;
+            font-family: 微软雅黑,sans-serif;
+            text-align: center;
+            display: block;
+            height: 33px;
+        }
+
+        /*鼠标移动上去的时候,把字的颜色设置为白色,并且加一个背景*/
+        #nav a:hover{
+            color: white;
+            background-image: url("./images/nav_on.gif");
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <img src="./images/logo.jpg" alt="logo" id="logo" />
+            <ul id="nav">
+                <li><a href="#">导航1</a></li>
+                <li><a href="#">导航2</a></li>
+                <li><a href="#">导航3</a></li>
+                <li><a href="#">导航4</a></li>
+                <li><a href="#">导航5</a></li>
+                <li><a href="#">导航6</a></li>
+                <li><a href="#">导航7</a></li>
+            </ul>
+        </div>
+        <div id="main">
+            <div id="lside">
+                <div class="subtitle"></div>
+                <div class="four"></div>
+                <div class="four"></div>
+                <div class="four"></div>
+                <div class="four"></div>
+            </div>
+            <div id="rside">
+                <div class="subtitle"></div>
+                <ul id="art">
+                    <li>文章1</li>
+                    <li>文章2</li>
+                    <li>文章3</li>
+                    <li>文章4</li>
+                    <li>文章5</li>
+                    <li>文章6</li>
+                    <li>文章7</li>
+                </ul>
+            </div>
+        </div>
+        <div id="footer"></div>
+    </div>
+</body>
+</html>

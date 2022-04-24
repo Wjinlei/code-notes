@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>问题探究</title>
+
+    <style type="text/css">
+        #fu{
+            width: 100px;
+            height: 100px;
+            background-color: black;
+        }
+
+        #zi1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            float: left;
+        }
+
+        #zi2{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<!--如果父div中,有2个子div是浮动的,那么父div的高度有没有被子div撑起来?父div是多高?-->
+
+    <div id="fu">
+        <div id="zi1"></div>
+        <div id="zi2"></div>
+    </div>
+
+<!--答案:-->
+<!--父div的宽度不会被撑起来,但高度会被撑起来-->
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>margin重叠现象</title>
+    <style type="text/css">
+        #test1{
+            height: 100px;
+            background-color: blue;
+            margin-bottom: 50px; /*距下边距50像素*/
+        }
+
+        #test2{
+            height: 100px;
+            background-color: green;
+            margin-top: 50px; /*距上边距50像素*/
+        }
+
+        /*经过观察发现,两个div之间的距离根本没有100像素,而还是50像素,这是怎么回事呢?*/
+
+        /*相邻的普通元素,上下边距,并非简单的相加。*/
+        /*而是取其中较大的边距值。*/
+        /*注意是普通元素,漂浮元素不算。*/
+        /*这种现象叫做margin重叠*/
+    </style>
+</head>
+<body>
+    <div id="test1"></div>
+    <div id="test2"></div>
+</body>
+</html>
