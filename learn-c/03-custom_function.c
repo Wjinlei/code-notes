@@ -4,6 +4,7 @@
 
 /* Function declaration */
 void newline(void);
+int increment(int x);
 
 int main(int argc, char* argv[])
 {
@@ -12,6 +13,10 @@ int main(int argc, char* argv[])
         newline(); // Call custom function
         newline(); // Call custom function
         printf("%s\n", "Second Line.");
+
+        int i = 1, j = 2;
+        printf("i = %d\n", increment(i));
+        printf("j = %d\n", increment(j));
         return 0;
 }
 
@@ -21,4 +26,12 @@ int main(int argc, char* argv[])
 void newline(void)
 {
         printf("\n");
+}
+
+/*
+ * Custom function
+ */
+int increment(int x)
+{
+        return x + 1;
 }
