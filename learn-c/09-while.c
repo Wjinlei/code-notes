@@ -19,6 +19,25 @@ int factorial(int n)
         return result;
 }
 
+/**
+ * while语句先测试控制表达式的值再执行循环体，
+ * 而do/while语句先执行循环体再测试控制表达式的值。
+ * 如果控制表达式的值一开始就是假，while语句的循环体一次都不执行，
+ * 而do/while语句的循环体仍然要执行一次再跳出循环。
+ * 说白了，do/while和while的区别就是do/while至少要执行一次
+ */
+int factorial2(int n)
+{
+        int result = 1;
+        int i = 1;
+        do {
+                result = result * i;
+                i = i + 1;
+        } while (i <= n);
+
+        return result;
+}
+
 int main(int argc, char* argv[])
 {
         printf("%d\n", factorial(3));
