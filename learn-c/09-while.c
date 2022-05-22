@@ -26,7 +26,7 @@ int factorial(int n)
  * 而do/while语句的循环体仍然要执行一次再跳出循环。
  * 说白了，do/while和while的区别就是do/while至少要执行一次
  */
-int factorial2(int n)
+int factorial_do_while(int n)
 {
         int result = 1;
         int i = 1;
@@ -41,5 +41,6 @@ int factorial2(int n)
 int main(int argc, char* argv[])
 {
         printf("%d\n", factorial(3));
+        printf("%d\n", factorial_do_while(3));
         return 0;
 }
