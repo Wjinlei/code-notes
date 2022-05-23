@@ -55,6 +55,12 @@ int main(int argc, char* argv[])
         }; /* z2.x=3.0, z2.y=0.0 */
         struct complex_struct2 z11 = { 0 }; /* z3.x=0.0, z3.y=0.0 */
 
+        /* C99引入的新特性，用于初始化稀疏（Sparse）结构体和稀疏数组很方便。
+         * 有些时候结构体或数组中只有某一个或某几个成员需要初始化，其它成员都用0初始化即
+         * 这样就不必按顺序进行初始化
+         */
+        // struct complex_struct z12 = { .y = 4.0 }; /* z1.x=0.0, z1.y=4.0 */
+
         printf("z9 = %f+%f\n", z9.x, z9.y);
         printf("z10 = %f+%f\n", z10.x, z10.y);
         printf("z11 = %f+%f\n", z11.x, z11.y);
