@@ -8,7 +8,7 @@
  * 枚举常量也是一种整型，其值在编译时确定，因此也可以出现在常量表达式中，
  * 可以用于初始化全局变量或者作为case分支的判断条件。
  */
-enum enum1 {
+enum ENUM1 {
         AAA,
         BBB
 };
@@ -16,7 +16,7 @@ enum enum1 {
 /*
  * 如果不希望从0开始分配，可以这样定义：
  */
-enum enum2 {
+enum ENUM2 {
         /*
          * 有一点需要注意，虽然结构体的成员名和变量名不在同一命名空间中，
          * 但枚举的成员名却和变量名在同一命名空间中，
@@ -30,7 +30,10 @@ enum enum2 {
 
 int main(int argc, char* argv[])
 {
+        enum ENUM1 e1;
+        e1 = BBB; // 枚举变量可以代表其任意一个成员
 
+        printf("e1 = %d\n", e1);
         printf("%d\n", AAA);
         printf("%d\n", BBB);
         printf("%d\n", CCC);
