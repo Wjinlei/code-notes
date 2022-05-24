@@ -1,5 +1,3 @@
-/* Copyright (c) 2022 Jerry. All Rights Reserved. */
-
 #include <math.h>
 #include <stdio.h>
 

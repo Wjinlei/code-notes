@@ -1,5 +1,3 @@
-/* Copyright (c) 2022 Jerry. All Rights Reserved. */
-
 #include <stdio.h>
 
 /* 数组（Array）也是一种复合数据类型，它由一系列相同类型的元素（Element）组成。*/

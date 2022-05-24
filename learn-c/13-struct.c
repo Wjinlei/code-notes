@@ -1,5 +1,3 @@
-/* Copyright (c) 2022 Jerry. All Rights Reserved. */
-
 #include <stdio.h>
 
 /* 定义一个结构体类型 */
